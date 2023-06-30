@@ -1,5 +1,4 @@
 import React from 'react';
-// import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import {
   ApolloClient,
   InMemoryCache,
@@ -8,9 +7,8 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Navbar from '../src/components/NavBar'
-
-
+import Navbar from '../src/components/NavBar';
+import JournalEntry from './pages/journal';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -35,19 +33,18 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-
 function App() {
   return (
     <ApolloProvider client={client}>
-    <Router>
-    <Navbar/>
-     <Routes>
-         <Route exact path='/' element={<></>} />
-         <Route exact path='/saved' element={<></>} />
-         <Route render={() => <h1 className='display-2'>Wrong page!</h1>} />
-     </Routes>
-   </Router>
-  </ApolloProvider>
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route exact path="/" element={<JournalEntry />} />
+          <Route exact path="/saved" element={<></>} />
+          <Route render={() => <h1 className="display-2">Wrong page!</h1>} />
+        </Routes>
+      </Router>
+    </ApolloProvider>
   );
 }
 
