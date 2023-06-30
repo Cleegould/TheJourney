@@ -22,5 +22,10 @@
   "devDependencies": {
     "concurrently": "^5.1.0"
   },
-  "homepage": "https://github.com/Cleegould/TheJourney#readme"
+  "homepage": "https://github.com/Cleegould/TheJourney#readme",
+  "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.13.6"
+  }
 }
