@@ -9,6 +9,7 @@ import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from '../src/components/NavBar';
 import JournalEntry from './pages/journal';
+import TODO from '../src/pages/To-Do'
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -40,7 +41,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route exact path="/" element={<JournalEntry />} />
-          <Route exact path="/saved" element={<></>} />
+          <Route exact path="/todo" element={<TODO />} />
           <Route render={() => <h1 className="display-2">Wrong page!</h1>} />
         </Routes>
       </Router>
