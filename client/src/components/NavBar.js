@@ -13,7 +13,7 @@ import MenuItem from '@mui/material/MenuItem';
 // import zIndex from '@mui/material/styles/zIndex';
 
 
-const pages = ['Profile', 'Journal', 'To-dos' ,'logout'];
+const pages = [{profileName:'Profile',link:'/profile'},{profileName:'Journal',link:'/journal'} ,{profileName:'To-dos',link:'/todo'}  ,{profileName:'Logout',link:'/logout'}];
 
 function ResponsiveHeader({ handlePageChange }) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -81,10 +81,11 @@ function ResponsiveHeader({ handlePageChange }) {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={() => { 
+              {pages.map((page,index) => (
+                <MenuItem key={index} onClick={() => { 
+                    console.log(`${page.link}`);
                  }} >
-                  <Typography textAlign="center">{page}</Typography>
+                  <Typography textAlign="center">{page.profileName}</Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -107,14 +108,15 @@ function ResponsiveHeader({ handlePageChange }) {
             The Journey
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
+            {pages.map((page,index) => (
               <Button
-                key={page}
+                key={index}
                 onClick={() =>{
+                    console.log(`${page.link}`);
                }}
                 sx={{ my: 2, color: '#E5E6E4', display: 'block' }}
               >
-                {page}
+                {page.profileName}
               </Button>
             ))}
           </Box>
