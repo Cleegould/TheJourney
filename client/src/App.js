@@ -10,6 +10,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from '../src/components/NavBar';
 import JournalEntry from './pages/journal';
 import TODO from '../src/pages/To-Do'
+import WelcomePage from './components/WelcomePage';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -40,6 +41,7 @@ function App() {
       <Router>
         <Navbar />
         <Routes>
+          <Route exact path='/welcomepage' element={<WelcomePage />} />
           <Route exact path="/journal" element={<JournalEntry />} />
           <Route exact path="/todo" element={<TODO />} />
           <Route render={() => <h1 className="display-2">Wrong page!</h1>} />

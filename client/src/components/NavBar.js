@@ -37,9 +37,9 @@ function ResponsiveHeader({ handlePageChange }) {
       <Container   maxWidth="xl">
         <Toolbar  disableGutters>
           <Typography
-            variant="h5"
+            variant="h3"
             noWrap
-            component="h5"
+            component="h3"
             href="/"
             sx={{
               mr: 2,

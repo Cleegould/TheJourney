@@ -1,0 +1,14 @@
+.welcome-page{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000009;
+
+}
+.welcome-btn{
+    display: flex;
+    padding-bottom: 12px;
+    
+}
