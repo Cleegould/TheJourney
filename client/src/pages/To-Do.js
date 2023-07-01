@@ -30,15 +30,15 @@ const TODO = () => {
           backgroundColor: '#FE5720',
         },
         '@media (min-width: 601px) and (max-width: 960px)' : {
-          minWidth: 400,
-          width: 400,
+          // minWidth: 400,
+          width: 500,
           textAlign: 'center',
           marginTop: '20px',
           backgroundColor: '#FE5720',
         },
         '@media (min-width: 961px) and (max-width: 1280px)': {
         //   minWidth: 400,
-          width: 333,
+          width: 500,
         //   height: 400 ,
           textAlign: 'center',
           marginTop: '20px',

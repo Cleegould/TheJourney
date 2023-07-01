@@ -40,7 +40,7 @@ function App() {
       <Router>
         <Navbar />
         <Routes>
-          <Route exact path="/" element={<JournalEntry />} />
+          <Route exact path="/journal" element={<JournalEntry />} />
           <Route exact path="/todo" element={<TODO />} />
           <Route render={() => <h1 className="display-2">Wrong page!</h1>} />
         </Routes>

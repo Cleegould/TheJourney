@@ -9,6 +9,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
+import { Link } from 'react-router-dom';
 
 // import zIndex from '@mui/material/styles/zIndex';
 
@@ -51,7 +52,7 @@ function ResponsiveHeader({ handlePageChange }) {
           >
             The Journey
           </Typography>
-
+          {/* <Link to="/">back to the homepage.</Link> */}
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
@@ -83,9 +84,10 @@ function ResponsiveHeader({ handlePageChange }) {
             >
               {pages.map((page,index) => (
                 <MenuItem key={index} onClick={() => { 
+                  handleCloseNavMenu()
                     console.log(`${page.link}`);
                  }} >
-                  <Typography textAlign="center">{page.profileName}</Typography>
+                  <Link to={page.link}><Typography textAlign="center">{page.profileName}</Typography></Link>
                 </MenuItem>
               ))}
             </Menu>
@@ -109,15 +111,16 @@ function ResponsiveHeader({ handlePageChange }) {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page,index) => (
-              <Button
+             <Link to={page.link} ><Button
                 key={index}
                 onClick={() =>{
                     console.log(`${page.link}`);
+                    handleCloseNavMenu()
                }}
                 sx={{ my: 2, color: '#E5E6E4', display: 'block' }}
               >
                 {page.profileName}
-              </Button>
+              </Button></Link> 
             ))}
           </Box>
 
