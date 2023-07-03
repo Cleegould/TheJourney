@@ -13,7 +13,7 @@ const resolvers = {
   
     me: async (parent, args, context) => {
       if (context.user) {
-        return User.findOne({ _id: context.user._id }).populate('challenge');
+        return User.findOne({ _id: context.user._id }).populate('challenges');
       }
       throw new AuthenticationError('You need to be logged in!');
     },
@@ -43,16 +43,15 @@ const resolvers = {
       return { token, user };
     },
 
-    addChallenge: async (parent, {name, completed, dateCreated}, context) => {
+    addChallenge: async (parent, {name, dateCreated}, context) => {
         if (context.user) {
             const challenge = await Challenge.create({
                 name, 
-                completed:false,
                 dateCreated: new Date()
             })
             await User.findOneAndUpdate(
                 { _id: context.user._id },
-                { $addToSet: { challenges: [challenge._id ]} }
+                { $addToSet: { challenges: challenge._id } }
               );  
               return challenge;
         } 
@@ -61,6 +60,26 @@ const resolvers = {
     }
 
   },
+
+  updateChallenge: async (parent, {input}, context) =>{
+    if (context.user) {
+      const challenge = await Challenge.findOneAndUpdate({
+        _id: input._id
+      },
+      {
+        $set: {completed: input.completed, medalEarned: input.medalEarned}
+      },
+      {
+        new: true
+      }
+
+      )
+      return challenge
+    }
+    throw new AuthenticationError('You need to be loggied in!')
+  
+  }
+
 
 
 }
