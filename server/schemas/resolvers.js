@@ -10,7 +10,7 @@ const resolvers = {
     //         return Challenge.findOne()
     //     }
     // },
-  
+
     me: async (parent, args, context) => {
       if (context.user) {
         return User.findOne({ _id: context.user._id }).populate('challenges');
@@ -43,45 +43,41 @@ const resolvers = {
       return { token, user };
     },
 
-    addChallenge: async (parent, {name, dateCreated}, context) => {
-        if (context.user) {
-            const challenge = await Challenge.create({
-                name, 
-                dateCreated: new Date()
-            })
-            await User.findOneAndUpdate(
-                { _id: context.user._id },
-                { $addToSet: { challenges: challenge._id } }
-              );  
-              return challenge;
-        } 
-        throw new AuthenticationError('You need to be logged in!')
-
-    }
-
-  },
-
-  updateChallenge: async (parent, {input}, context) =>{
-    if (context.user) {
-      const challenge = await Challenge.findOneAndUpdate({
-        _id: input._id
-      },
-      {
-        $set: {completed: input.completed, medalEarned: input.medalEarned}
-      },
-      {
-        new: true
+    addChallenge: async (parent, { name, dateCreated }, context) => {
+      if (context.user) {
+        const challenge = await Challenge.create({
+          name,
+          dateCreated: new Date()
+        })
+        await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { challenges: challenge._id } }
+        );
+        return challenge;
       }
+      throw new AuthenticationError('You need to be logged in!')
 
-      )
-      return challenge
+    },
+
+    updateChallenge: async (parent, { input }, context) => {
+      if (context.user) {
+        const challenge = await Challenge.findOneAndUpdate({
+          _id: input._id
+        },
+          {
+            $set: { completed: input.completed, medalEarned: input.medalEarned }
+          },
+          {
+            new: true
+          }
+
+        )
+        return challenge
+      }
+      throw new AuthenticationError('You need to be loggied in!')
+
     }
-    throw new AuthenticationError('You need to be loggied in!')
-  
   }
-
-
-
 }
 
 module.exports = resolvers;
