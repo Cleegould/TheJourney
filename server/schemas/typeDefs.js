@@ -12,8 +12,9 @@ const typeDefs = gql`
   type Challenge {
     _id: ID
     name: String!
-    completed: Boolean!
+    completed: Boolean
     dateCreated: Date!
+    medalEarned: String
   }
 
 
@@ -21,6 +22,11 @@ const typeDefs = gql`
     token: ID!
     user: User
 
+  }
+  input ChallengeInput {
+    _id: ID!
+    completed: Boolean
+    medalEarned: String
   }
 
   type Query {
@@ -31,7 +37,8 @@ const typeDefs = gql`
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addChallenge(name:String!, completed:Boolean!, dateCreated: Date!)
+    addChallenge(name:String!, dateCreated: Date!): Challenge 
+    updateChallenge(input: ChallengeInput): Challenge 
   }
 
  `;
