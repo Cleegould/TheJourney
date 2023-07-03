@@ -13,7 +13,7 @@ const typeDefs = gql`
     _id: ID
     name: String!
     completed: Boolean
-    dateCreated: Date!
+    dateCreated: String
     medalEarned: String
   }
 
@@ -37,7 +37,7 @@ const typeDefs = gql`
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addChallenge(name:String!, dateCreated: Date!): Challenge 
+    addChallenge(name:String!, dateCreated: String): Challenge 
     updateChallenge(input: ChallengeInput): Challenge 
   }
 
