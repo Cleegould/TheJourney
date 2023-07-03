@@ -2,4 +2,4 @@
 const Challenge = require('./challenge');
 const User = require ('./User');
 
-module.exports = { Challenge, ChallengeProgress, User };
+module.exports = { Challenge, User };
