@@ -9,13 +9,18 @@ const challengeSchema = new Schema({
   },
   completed: {
     type: Boolean,
-    required: true,
+    default: false
   },
   dateCreated: {
     type: Date,
     required: true,
     default: Date.now  
   },
+  medalEarned: {
+    type: String, 
+
+  }
+  
   
 });
 
