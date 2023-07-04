@@ -1,5 +1,8 @@
 // Creates and exports the Mongoose model for the "Challenge" collection.
-const { Schema, model } = require("mongoose");
+// const { Schema, model } = require("mongoose");
+const mongoose = require('mongoose');
+
+const { Schema } = mongoose;
 
 const challengeSchema = new Schema({
   name: {
@@ -23,5 +26,5 @@ const challengeSchema = new Schema({
   ]
 });
 
-const Challenge = model("Challenge", challengeSchema);
+const Challenge = mongoose.model("Challenge", challengeSchema);
 module.exports = Challenge;
