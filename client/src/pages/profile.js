@@ -1,10 +1,9 @@
 import React from 'react'
 
-const profile = () => {
+export default function Profile() {
   return (
     <div>
       
     </div>
   )
 }
-export default function profile;
