@@ -13,7 +13,6 @@ const typeDefs = gql`
     _id: ID
     name: String!
     completed: Boolean!
-    dateCreated: Date!
   }
 
   type Task {
@@ -23,20 +22,19 @@ const typeDefs = gql`
   }
 
   type Auth {
-    token: ID!
+    token: ID
     user: User
 
   }
 
   type Query {
     me: User
-    
   }
 
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addChallenge(name:String!, completed:Boolean!, dateCreated: Date!)
+    addChallenge(name:String!, completed:Boolean!): User
   }
 
  `;
