@@ -16,6 +16,11 @@ const typeDefs = gql`
     dateCreated: Date!
   }
 
+  type Task {
+    _id: ID
+    name: String!
+    completed: Boolean!
+  }
 
   type Auth {
     token: ID!
