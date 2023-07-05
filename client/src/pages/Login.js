@@ -60,7 +60,6 @@ export default function LogInForm() {
       </Button>
       {data ? (
               <p>
-                Success! You may now head{' '}
                 <Link to="/todo">back to the homepage.</Link>
               </p>
             ) : (

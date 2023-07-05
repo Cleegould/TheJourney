@@ -20,9 +20,9 @@ const pages = [{profileName:'Profile',link:'/profile'},{profileName:'Journal',li
 function ResponsiveHeader({ handlePageChange }) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
 
-  const logout = (event) => {
-    console.log(event.target.innerHTML);
-    if (event.target.innerHTML ==='Logout' ) {
+  const endSession = (event) => {
+    console.log(event.target.textContent);
+    if (event.target.textContent ==='Logout' ) {
       auth.logout()
     } else{
       return
@@ -97,7 +97,7 @@ function ResponsiveHeader({ handlePageChange }) {
                   handleCloseNavMenu()
                     console.log(`${page.link}`);
                  }} >
-                  <Link  onClick={logout} to={page.link}><Typography textAlign="center">{page.profileName}</Typography></Link>
+                  <Link  onClick={endSession} to={page.link}><Typography textAlign="center">{page.profileName}</Typography></Link>
                 </MenuItem>
               ))}
             </Menu>
@@ -121,10 +121,10 @@ function ResponsiveHeader({ handlePageChange }) {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page,index) => (
-             <Link to={page.link} ><Button
+             <Link onClick={endSession} to={page.link} ><Button
                 key={index}
                 onClick={() =>{
-                    console.log(`${page.link}`);
+                    // console.log(`${page.link}`);
                     handleCloseNavMenu()
                }}
                 sx={{ my: 2, color: '#E5E6E4', display: 'block' }}
