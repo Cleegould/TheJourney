@@ -21,13 +21,15 @@ const resolvers = {
 
   Mutation: {
     addUser: async (parent, { username, email, password }) => {
+      console.log('signup');
       const user = await User.create({ username, email, password });
       const token = signToken(user);
       return { token, user };
     },
     login: async (parent, { email, password }) => {
+ 
       const user = await User.findOne({ email });
-
+      console.log(user);
       if (!user) {
         throw new AuthenticationError('No user found with this email address');
       }
