@@ -9,6 +9,8 @@ import Paper from '@mui/material/Paper';
 import { format } from "date-fns";
 import TextField from '@mui/material/TextField';
 import '../../src/assets/css/To-Do.css'
+import auth from '../utils/auth';
+import RedirectLogin from './Redirect-Login';
 
 
 const TODO = () => {
@@ -53,6 +55,9 @@ const TODO = () => {
           backgroundColor: '#FE5720',
         },
       }
+      if (!auth.loggedIn()) {
+        return <RedirectLogin />;
+      } 
  
 
   return (
