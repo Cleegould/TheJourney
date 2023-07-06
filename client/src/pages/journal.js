@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { TextField, Button, Box, Typography, IconButton, LinearProgress } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import journeyLogo from "../images/journey.jpg";
+import auth from '../utils/auth';
+import RedirectLogin from './Redirect-Login';
 
 import '../../src/assets/css/JournalEntry.css'
 
@@ -36,6 +38,10 @@ const JournalEntry = () => {
     updatedEntries.splice(index, 1);
     setEntries(updatedEntries);
   };
+
+  if (!auth.loggedIn()) {
+    return <RedirectLogin />;
+  } 
 
   return (
     <Box
