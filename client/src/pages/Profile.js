@@ -4,6 +4,7 @@ import { format } from "date-fns";
 import '../assets/css/Profile.css'
 import auth from '../utils/auth';
 import RedirectLogin from './Redirect-Login';
+import ChallengeForm from '../components/ChallengeForm';
 
 
 export default function Profile() {
@@ -60,12 +61,13 @@ export default function Profile() {
     <div className='profile-container'>
              <Paper sx={customStyles} >
             <h2>{format(new Date(), "MM-dd-yyyy")}</h2>
+            <h2>profile</h2>
           
         </Paper>
 
         <Paper sx={customStyles} >
-            <h2>Today's To-Do's</h2>
-
+            <h3> Start New Challenge</h3>
+          <ChallengeForm />
         </Paper>
 
         <Paper sx={customStyles} >

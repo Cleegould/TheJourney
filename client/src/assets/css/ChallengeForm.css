@@ -1,0 +1,11 @@
+.challenge-form{
+    min-width: none;
+    display:flex;
+    flex-direction:column;
+
+    /* color: aquamarine; */
+}
+
+/* .form-color{
+    background-color: #FE5720;  
+} */
