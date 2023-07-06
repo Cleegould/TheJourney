@@ -32,6 +32,13 @@ const typeDefs = gql`
 
   }
 
+  type Journal {
+    _id: ID
+    title: String!
+    body: String!
+    dateCreated: Date!
+  }
+
   type Query {
     me: User
   }
