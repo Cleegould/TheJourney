@@ -5,7 +5,11 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const challengeSchema = new Schema({
-  name: {
+  title: {
+    type: String,
+    required: true,
+  },
+  description: {
     type: String,
     required: true,
   },
@@ -13,11 +17,21 @@ const challengeSchema = new Schema({
     type: Boolean,
     required: true,
   },
-  dateCreated: {
+  active: {
+    type: Boolean,
+    required: true,
+  },
+  startDate: {
     type: Date,
     required: true,
     default: Date.now  
   },
+  userId: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+    }
+  ],
   tasks: [
     {
       type: Schema.Types.ObjectId,
