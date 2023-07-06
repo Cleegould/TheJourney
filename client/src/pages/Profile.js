@@ -2,6 +2,9 @@ import React from 'react'
 import Paper from '@mui/material/Paper';
 import { format } from "date-fns";
 import '../assets/css/Profile.css'
+import auth from '../utils/auth';
+import RedirectLogin from './Redirect-Login';
+
 
 export default function Profile() {
 
@@ -47,6 +50,10 @@ export default function Profile() {
       backgroundColor: '#FE5720',
     },
   }
+
+  if (!auth.loggedIn()) {
+    return <RedirectLogin />;
+  } 
 
 
   return (
