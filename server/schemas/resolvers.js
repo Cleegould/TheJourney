@@ -10,7 +10,7 @@ const resolvers = {
     //         return Challenge.findOne()
     //     }
     // },
-  
+
     me: async (parent, args, context) => {
       if (context.user) {
         return User.findOne({ _id: context.user._id }).populate('challenge');
@@ -27,7 +27,7 @@ const resolvers = {
       return { token, user };
     },
     login: async (parent, { email, password }) => {
- 
+
       const user = await User.findOne({ email });
       console.log(user);
       if (!user) {
@@ -45,20 +45,19 @@ const resolvers = {
       return { token, user };
     },
 
-    addChallenge: async (parent, {name, completed, dateCreated}, context) => {
-        if (context.user) {
-            const challenge = await Challenge.create({
-                name, 
-                completed:false,
-                dateCreated: new Date()
-            })
-            await User.findOneAndUpdate(
-                { _id: context.user._id },
-                { $addToSet: { challenges: [challenge._id ]} }
-              );  
-              return challenge;
-        } 
-        throw new AuthenticationError('You need to be logged in!')
+    addChallenge: async (parent, { title, startDate, description }, context) => {
+      if (context.user) {
+        const challenge = await Challenge.create({
+          title,
+          completed: false,
+          startDate,
+          description,
+          userId: context.user._id,
+          active: true,
+        })
+        return challenge;
+      }
+      throw new AuthenticationError('You need to be logged in!')
 
     }
 
