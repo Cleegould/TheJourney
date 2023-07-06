@@ -33,22 +33,22 @@ const ProfileForm = () => {
     return (
       <form onSubmit={handleSubmit}>
         <label>
-          Name:
+          Name: 
           <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
         </label>
         <br />
         <label>
-          Email:
+          Email: 
           <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
         </label>
         <br />
         <label>
-          Password:
+          Password: 
           <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
         </label>
         <br />
         <label>
-          Confirm Password:
+          Confirm Password: 
           <input type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
         </label>
         <br />

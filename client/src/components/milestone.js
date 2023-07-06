@@ -1,2 +1,9 @@
+import React from 'react'
 
-export default MilestoneForm;
+export default function milestone() {
+  return (
+    <div>
+      
+    </div>
+  )
+}
