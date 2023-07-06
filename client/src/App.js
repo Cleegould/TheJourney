@@ -11,6 +11,7 @@ import Navbar from '../src/components/NavBar';
 import JournalEntry from './pages/journal';
 import TODO from '../src/pages/To-Do'
 import WelcomePage from './components/WelcomePage';
+import Profile from './pages/Profile';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -42,6 +43,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route exact path='/' element={<WelcomePage />} />
+          <Route exact path='/profile' element={<Profile />} />
           <Route exact path="/journal" element={<JournalEntry />} />
           <Route exact path="/todo" element={<TODO />} />
           <Route render={() => <h1 className="display-2">Wrong page!</h1>} />
