@@ -21,8 +21,9 @@ const typeDefs = gql`
 
   type Task {
     _id: ID
-    name: String!
-    completed: Boolean!
+    type: String
+    description: String
+    frequency: Int
   }
 
   type Auth {
@@ -41,13 +42,12 @@ const typeDefs = gql`
     frequency: Int
   }
 
-
-
-
+  
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addChallenge(title:String!, completed:Boolean!,  descrption: String!,   active: Boolean!, input: TaskInput userID: ID ): Challenge
+    addChallenge(title:String!, completed:Boolean!,  descrption: String!, active: Boolean!, input: TaskInput, userID: ID ): Challenge
+    addTask(descrption: String, Type: String, frequency: Int): Challenge
   }
 
  `;
