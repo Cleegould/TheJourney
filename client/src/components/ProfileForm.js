@@ -28,6 +28,8 @@ const ProfileForm = () => {
       setEmail('');
       setPassword('');
       setConfirmPassword('');
+
+      return profile;
     };
 
     return (
