@@ -24,4 +24,15 @@ export const ADD_USER = gql`
   }
 `;
 
+export const ADD_CHALLENGE = gql`
+  mutation addChallenge($title: String!, $description: String!, $startDate: String!) {
+    addChallenge(title: $title, description: $description, startDate: $startDate ){
+      title
+      description
+      startDate
+  
+    }
+  }
+`;
+
 

@@ -8,6 +8,8 @@ import TextField from '@mui/material/TextField';
 // import DialogContent from '@mui/material/DialogContent';
 import FormCalender from './FormCalender';
 import '../assets/css/ChallengeForm.css'
+import {useMutation} from '@apollo/client'
+import { ADD_CHALLENGE} from '../utils/mutations'
 
 
 
@@ -16,7 +18,7 @@ import '../assets/css/ChallengeForm.css'
 
 export default function ChallengeForm() {
   const [challengeFormData, setChallengeFormData] = useState({ title: '', description: '',startDate:'' });
-
+  const [addChallenge, { error, data }] = useMutation(ADD_CHALLENGE);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -26,15 +28,15 @@ export default function ChallengeForm() {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     console.log(challengeFormData);
-    // try {
-    //   const { data } = await login({
-    //     variables: { ...userFormData },
-    //   });
+    try {
+      const { data } = await addChallenge({
+        variables: { ...challengeFormData },
+      });
 
-    //   auth.login(data.login.token);
-    // } catch (e) {
-    //   console.error(e);
-    // }
+      console.log(data);
+    } catch (e) {
+      console.error(e);
+    }
 
     // clear form values
     setChallengeFormData({
