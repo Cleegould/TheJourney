@@ -12,6 +12,7 @@ import JournalEntry from './pages/journal';
 import TODO from '../src/pages/To-Do'
 import WelcomePage from './components/WelcomePage';
 import Profile from './pages/Profile';
+import NewChallenge from './components/NewTask';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -46,6 +47,7 @@ function App() {
           <Route exact path='/profile' element={<Profile />} />
           <Route exact path="/journal" element={<JournalEntry />} />
           <Route exact path="/todo" element={<TODO />} />
+          <Route exact path="/newChallenge" element={<NewChallenge />} />
           <Route render={() => <h1 className="display-2">Wrong page!</h1>} />
         </Routes>
       </Router>

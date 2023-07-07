@@ -1,11 +1,11 @@
-import React from 'react'
+import React from 'react';
 import Paper from '@mui/material/Paper';
 import { format } from "date-fns";
 import '../assets/css/Profile.css'
 import auth from '../utils/auth';
 import RedirectLogin from './Redirect-Login';
 import ChallengeForm from '../components/ChallengeForm';
-
+import NewTask from '../components/NewTask';
 
 export default function Profile() {
 
@@ -56,13 +56,12 @@ export default function Profile() {
     return <RedirectLogin />;
   } 
 
-
   return (
     <div className='profile-container'>
-             <Paper sx={customStyles} >
+        <Paper sx={customStyles} >
             <h2>{format(new Date(), "MM-dd-yyyy")}</h2>
             <h2>profile</h2>
-          
+          <NewTask />
         </Paper>
 
         <Paper sx={customStyles} >
