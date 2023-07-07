@@ -13,6 +13,7 @@ const typeDefs = gql`
     _id: ID
     completed: Boolean!
     title: String!
+    startDate: String!
     description: String!
     active: Boolean!
     tasks: [Task]
@@ -57,7 +58,7 @@ const typeDefs = gql`
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addChallenge(title:String!, completed:Boolean!,  description: String!, active: Boolean!, input: TaskInput, userID: ID ): Challenge
+    addChallenge(title:String!,  description: String!,startDate: String! input: TaskInput, userID: ID ): Challenge
     addTask(description: String, Type: String, frequency: Int): Challenge
     addJournal(title:String!, body: String!, userID: ID, input: JournalEntryInput): Journal
   }
