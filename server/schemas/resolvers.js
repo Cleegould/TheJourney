@@ -1,7 +1,8 @@
 const { AuthenticationError } = require("apollo-server-express");
-const { User, Challenge, Task } = require("../models");
+const { User, Challenge, Task, Journal, JournalEntry } = require("../models");
 const { signToken } = require("../utils/auth");
 const { findOne } = require("../models/challenge");
+
 
 const resolvers = {
   Query: {
@@ -17,12 +18,20 @@ const resolvers = {
       }
       throw new AuthenticationError("You need to be logged in!");
     },
+    usersJournal: async (parent, args, context) => {
+      if (context.user) {
+        return Journal.findOne({ userId: context.user._id }).populate("journal");
+      }
+      throw new AuthenticationError("You need to be logged in!");
+    }
   },
 
   Mutation: {
     addUser: async (parent, { username, email, password }) => {
       console.log("signup");
       const user = await User.create({ username, email, password });
+      const journal = await Journal.create({userId: user._id})
+      console.log(journal)
       const token = signToken(user);
       return { token, user };
     },
@@ -78,19 +87,18 @@ const resolvers = {
       }
       throw new AuthenticationError("You need to be logged in!");
     },
-    addJournal: async(parent, {title, body, dateCreated}, context) => {
+    addJournal: async (parent, { input }, context) => {
       if (context.user) {
-        const journal = await Journal.create({
-          title,
-          body,
-          dateCreated,
-        });
-        const updateJournal = await Journal.findAndModify(
-          {userId: context.user._id},
-          {$addToSet: { journal: [journal._id]}},
-          {new: true}
+        const journal = await JournalEntry.create(
+          input
         );
-        return updateJournal
+        const updateJournal = await Journal.findOneAndUpdate(
+          { userId: context.user._id },
+          { $addToSet: { journal: [journal._id] } },
+          { new: true }
+        );
+        console.log (updateJournal)
+        return journal
       }
       throw new AuthenticationError("You need to be logged in!");
     }
