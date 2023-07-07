@@ -5,6 +5,8 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
 
 const NewTask = () => {
     const [taskData, setTaskData] = useState({
@@ -40,10 +42,12 @@ const NewTask = () => {
     };
 
   return (
-    <div>
+    <div className='taskForm'>
       <form onSubmit={handleSubmit}>
-      <div>
-        <TextField
+      <Box sx={{ flexGrow: 1 }}>
+      <Grid container spacing={1}>
+        <Grid item xs={10}>
+          <TextField
           label="Task"
           placeholder="Placeholder"
           multiline
@@ -55,6 +59,8 @@ const NewTask = () => {
           onChange={handleChange}
           required
         />
+        </Grid>
+        <Grid item xs={10}>
         <TextField
           label="Description"
           multiline
@@ -66,7 +72,9 @@ const NewTask = () => {
           onChange={handleChange}
           required
         />
-      </div>
+        </Grid>
+      </Grid>
+      </Box>
       {/* drop down menu */}
       <div>
         <FormControl sx={{ m: 1, minWidth: 120 }}>
