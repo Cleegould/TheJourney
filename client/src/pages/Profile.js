@@ -83,8 +83,9 @@ log()
 
       
         <Paper sx={customStyles} >
-            <h2>Journal</h2>
- 
+            <h2>Current Challenge</h2>
+            <h4>Title:{challenge.title}</h4>
+            <p> Description: {challenge.description}</p>
         </Paper>
         <Paper sx={customStyles} >
             <h2>extra</h2>
