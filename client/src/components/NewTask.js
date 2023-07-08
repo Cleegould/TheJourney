@@ -5,9 +5,15 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
+import { ADD_TASK } from '../utils/mutations';
+import { useMutation } from '@apollo/client';
+
+
+
 const NewTask = () => {
+  const [addTask, { error, data }] = useMutation(ADD_TASK);
     const [taskFormData, setTaskFormData] = useState({
-      task: '',
+      taskTitle: '',
       description: '',
       frequency: 0,
     });
@@ -18,12 +24,21 @@ const NewTask = () => {
     const frequencyChange = (e) => {
       setTaskFormData({ ...taskFormData, frequency: e.target.value });
     };
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
       e.preventDefault();
       console.log(taskFormData)
+      try {
+        const { data } = await addTask({
+          variables: { ...taskFormData },
+        });
+  
+        console.log(data);
+      } catch (e) {
+        console.error(e);
+      }
       // Send Task to the back end
       setTaskFormData({
-        task: '',
+        taskTitle: '',
         description: '',
         frequency: 0,
       })
@@ -52,8 +67,8 @@ const NewTask = () => {
           variant="filled"
           type="text"
           id="Task"
-          name="task"
-          value={taskFormData.task}
+          name="taskTitle"
+          value={taskFormData.taskTitle}
           onChange={handleChange}
           required
         />

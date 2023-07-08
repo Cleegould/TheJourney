@@ -20,7 +20,7 @@ query challenge {
     startDate
     description
     tasks {
-      type
+      taskTitle
       description
       frequency
     }
