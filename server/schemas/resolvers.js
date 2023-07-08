@@ -6,11 +6,12 @@ const { findOne } = require("../models/challenge");
 
 const resolvers = {
   Query: {
-    // challenge: async (parent, args, context) =>{
-    //     if (context.user){
-    //         return Challenge.findOne()
-    //     }
-    // },
+    challenge: async (parent, args, context) =>{
+        if (context.user){
+            return Challenge.findOne({userId: context.user._id,active:true})
+        }
+        throw new AuthenticationError("You need to be logged in!");
+    },
 
     me: async (parent, args, context) => {
       if (context.user) {

@@ -6,6 +6,8 @@ import auth from '../utils/auth';
 import RedirectLogin from './Redirect-Login';
 import ChallengeForm from '../components/ChallengeForm';
 import NewTask from '../components/NewTask';
+import { useQuery } from '@apollo/client';
+import { QUERY_CHALLENGE } from '../utils/queries';
 
 export default function Profile() {
 
@@ -51,24 +53,35 @@ export default function Profile() {
       backgroundColor: '#FE5720',
     },
   }
+  const {data} = useQuery(QUERY_CHALLENGE)
 
+  const challenge = data?.challenge;
+  const log = () =>{
+    console.log(challenge);
+  }
+log()
   if (!auth.loggedIn()) {
     return <RedirectLogin />;
   } 
 
   return (
     <div className='profile-container'>
+      {challenge ? (
         <Paper sx={customStyles} >
             <h2>{format(new Date(), "MM-dd-yyyy")}</h2>
             <h2>profile</h2>
           <NewTask />
         </Paper>
-
+      ):(
         <Paper sx={customStyles} >
-            <h3> Start New Challenge</h3>
-          <ChallengeForm />
-        </Paper>
+        <h3> Start New Challenge</h3>
+      <ChallengeForm />
+    </Paper>
 
+      )}
+        
+
+      
         <Paper sx={customStyles} >
             <h2>Journal</h2>
  

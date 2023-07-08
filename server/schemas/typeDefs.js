@@ -48,6 +48,7 @@ const typeDefs = gql`
   type Query {
     me: User
     usersJournal: Journal
+    challenge(userId: ID, active: Boolean) : Challenge
   }
 
   input TaskInput{
