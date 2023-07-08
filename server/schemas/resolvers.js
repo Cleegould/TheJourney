@@ -7,7 +7,7 @@ const resolvers = {
   Query: {
     challenge: async (parent, args, context) =>{
         if (context.user){
-            return Challenge.findOne({userId: context.user._id,active:true})
+            return Challenge.findOne({userId: context.user._id,active:true}).populate("tasks")
         }
         throw new AuthenticationError("You need to be logged in!");
     },
@@ -63,10 +63,10 @@ const resolvers = {
       }
       throw new AuthenticationError("You need to be logged in!");
     },
-    addTask: async (parent, { type, description, frequency }, context) => {
+    addTask: async (parent, { task, description, frequency }, context) => {
       if (context.user) {
         const task = await Task.create({
-          type,
+          task,
           description,
           frequency,
         });
