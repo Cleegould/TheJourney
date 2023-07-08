@@ -35,4 +35,15 @@ export const ADD_CHALLENGE = gql`
   }
 `;
 
+export const ADD_TASK = gql`
+  mutation addTask($taskTitle: String!, $description: String!, $frequency: Int!) {
+    addTask(taskTitle: $taskTitle, description: $description, frequency: $frequency ){
+      title
+      description
+      startDate
+  
+    }
+  }
+`;
+
 

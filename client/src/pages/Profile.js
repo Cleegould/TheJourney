@@ -7,7 +7,7 @@ import RedirectLogin from './Redirect-Login';
 import ChallengeForm from '../components/ChallengeForm';
 import NewTask from '../components/NewTask';
 import { useQuery } from '@apollo/client';
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 import { QUERY_CHALLENGE } from '../utils/queries';
 
 export default function Profile() {
@@ -58,7 +58,7 @@ export default function Profile() {
 
   const challenge = data?.challenge || {} ;
   const log = () => {
-    console.log(challenge.tasks);
+    console.log(challenge);
   }
   log()
   // useEffect(() => {

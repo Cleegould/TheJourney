@@ -63,15 +63,15 @@ const resolvers = {
       }
       throw new AuthenticationError("You need to be logged in!");
     },
-    addTask: async (parent, { task, description, frequency }, context) => {
+    addTask: async (parent, { taskTitle, description, frequency }, context) => {
       if (context.user) {
         const task = await Task.create({
-          task,
+          taskTitle,
           description,
           frequency,
         });
         const updatedChallenge = await Challenge.findOneAndUpdate(
-          { userId: context.user._id },
+          { userId: context.user._id, active:true },
           { $addToSet: { tasks: [task._id] } },
           { new: true }
         );

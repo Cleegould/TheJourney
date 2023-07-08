@@ -22,7 +22,7 @@ const typeDefs = gql`
 
   type Task {
     _id: ID
-    task: String!
+    taskTitle: String!
     description: String
     frequency: Int!
   }
@@ -60,7 +60,7 @@ const typeDefs = gql`
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     addChallenge(title:String!,  description: String!,startDate: String! input: TaskInput, userID: ID ): Challenge
-    addTask(description: String, task: String!, frequency: Int!): Challenge
+    addTask(description: String, taskTitle: String!, frequency: Int!): Challenge
     addJournal(title:String!, body: String!, userID: ID, input: JournalEntryInput): Journal
   }
 
