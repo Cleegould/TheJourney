@@ -77,7 +77,7 @@ export default function Profile() {
 
   return (
     <div className='profile-container'>
-      {challenge ? (
+      {Object.keys(challenge).length !== 0 ? (
         <Paper sx={customStyles} >
             <h2>{format(new Date(), "MM-dd-yyyy")}</h2>
             <h2>profile</h2>
@@ -97,6 +97,7 @@ export default function Profile() {
             <h2>Current Challenge</h2>
             <h4>Title: {challenge.title}</h4>
             <p> Description: {challenge.description}</p>
+
         </Paper>
         <Paper sx={customStyles} >
             <h2>extra</h2>
