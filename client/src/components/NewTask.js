@@ -9,29 +9,39 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 
 const NewTask = () => {
-    const [taskData, setTaskData] = useState({
+    const [taskFormData, setTaskFormData] = useState({
       task: '',
       description: '',
       frequency: 0,
-      startDay: new Date().toLocaleDateString(),
-      isCompleat: false,
     });
 
     const handleChange = (e) => {
-      setTaskData({ ...taskData, [e.target.name]: e.target.value });
+      setTaskFormData({ ...taskFormData, [e.target.name]: e.target.value });
     };
 
     const frequencyChange = (e) => {
-      setTaskData({ ...taskData, frequency: e.target.value });
+      setTaskFormData({ ...taskFormData, frequency: e.target.value });
     };
   
     const handleSubmit = (e) => {
       e.preventDefault();
-      console.log(taskData)
+      console.log(taskFormData)
       // Send Task to the back end
+
+      setTaskFormData({
+        task: '',
+        description: '',
+        frequency: 0,
+      })
     };
 
     const [open, setOpen] = React.useState(false);
+
+    const inputStyles ={
+      margin: 'auto',
+      width: '90%',
+      marginBottom: '10px'
+    }
   
     const handleClose = () => {
       setOpen(false);
@@ -44,6 +54,9 @@ const NewTask = () => {
   return (
     <div className='taskForm'>
       <form onSubmit={handleSubmit}>
+      <div>
+        <TextField
+        sx={inputStyles}
       <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={1}>
         <Grid item xs={10}>
@@ -54,21 +67,22 @@ const NewTask = () => {
           variant="filled"
           type="text"
           id="Task"
-          name="Task"
-          value={taskData.Task}
+          name="task"
+          value={taskFormData.task}
           onChange={handleChange}
           required
         />
         </Grid>
         <Grid item xs={10}>
         <TextField
+          sx={inputStyles}
           label="Description"
           multiline
           rows={4}
           variant="filled"
           id="description"
           name="description"
-          value={taskData.description}
+          value={taskFormData.description}
           onChange={handleChange}
           required
         />
@@ -76,14 +90,15 @@ const NewTask = () => {
       </Grid>
       </Box>
       {/* drop down menu */}
-      <div>
-        <FormControl sx={{ m: 1, minWidth: 120 }}>
+      <div  >
+        <FormControl sx={{ m: 1, width: '90%' }}>
         <InputLabel id="dropDownFrequency">Frequency</InputLabel>
           <Select
             open={open}
             onClose={handleClose}
             onOpen={handleOpen}
-            value={taskData.frequency}
+            name='frequency'
+            value={taskFormData.frequency}
             label="frequency"
             onChange={frequencyChange}
           >
@@ -97,7 +112,7 @@ const NewTask = () => {
           </Select>
         </FormControl>
       </div>
-      <Button type="submit" variant="contained" onClick={handleSubmit}>Submit</Button>
+      <Button  sx={{ marginBottom: '10px'}} type="submit" variant="contained" onClick={handleSubmit}>Submit</Button>
     </form>
     </div>
   )
