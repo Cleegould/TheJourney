@@ -5,63 +5,47 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid';
-
 const NewTask = () => {
     const [taskFormData, setTaskFormData] = useState({
       task: '',
       description: '',
       frequency: 0,
     });
-
     const handleChange = (e) => {
       // console.log(e);
       setTaskFormData({ ...taskFormData, [e.target.name]: e.target.value });
     };
-
     const frequencyChange = (e) => {
       setTaskFormData({ ...taskFormData, frequency: e.target.value });
     };
-  
     const handleSubmit = (e) => {
       e.preventDefault();
       console.log(taskFormData)
       // Send Task to the back end
-
       setTaskFormData({
         task: '',
         description: '',
         frequency: 0,
       })
     };
-
     const [open, setOpen] = React.useState(false);
-
-    const inputStyles ={
+    const myStyles ={
       margin: 'auto',
       width: '90%',
       marginBottom: '10px'
     }
-  
     const handleClose = () => {
       setOpen(false);
     };
-  
     const handleOpen = () => {
       setOpen(true);
     };
-
   return (
-    <div className='taskForm'>
+    <div>
       <form onSubmit={handleSubmit}>
       <div>
         <TextField
-        sx={inputStyles}
-      <Box sx={{ flexGrow: 1 }}>
-      <Grid container spacing={1}>
-        <Grid item xs={10}>
-          <TextField
+        sx={myStyles}
           label="Task"
           placeholder="Placeholder"
           multiline
@@ -73,10 +57,8 @@ const NewTask = () => {
           onChange={handleChange}
           required
         />
-        </Grid>
-        <Grid item xs={10}>
         <TextField
-          sx={inputStyles}
+          sx={myStyles}
           label="Description"
           multiline
           rows={4}
@@ -87,9 +69,7 @@ const NewTask = () => {
           onChange={handleChange}
           required
         />
-        </Grid>
-      </Grid>
-      </Box>
+      </div>
       {/* drop down menu */}
       <div  >
         <FormControl sx={{ m: 1, width: '90%' }}>
@@ -118,5 +98,4 @@ const NewTask = () => {
     </div>
   )
 }
-
 export default NewTask;
