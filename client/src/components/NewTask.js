@@ -16,6 +16,7 @@ const NewTask = () => {
     });
 
     const handleChange = (e) => {
+      // console.log(e);
       setTaskFormData({ ...taskFormData, [e.target.name]: e.target.value });
     };
 
