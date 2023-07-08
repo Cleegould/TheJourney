@@ -8,12 +8,22 @@ export const QUERY_ME = gql`
       _id
       username
       email
-      thoughts {
-        _id
-        thoughtText
-        thoughtAuthor
-        createdAt
-      }
+    
     }
   }
+`;
+
+export const QUERY_CHALLENGE = gql`
+query challenge {
+  challenge{
+    title
+    startDate
+    description
+    tasks {
+      type
+      description
+      frequency
+    }
+  }
+}
 `;
