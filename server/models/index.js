@@ -2,6 +2,6 @@
 const Challenge = require('./challenge');
 const User = require ('./user');
 const Task = require('./task')
-const Journal = require('./journal')
+const journalEntry = require('./journalEntry')
 
-module.exports = { Challenge, User, Task, Journal };
+module.exports = { Challenge, User, Task, journalEntry };
