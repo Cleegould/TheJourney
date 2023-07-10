@@ -4,44 +4,62 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import journeyLogo from "../images/journey.jpg";
 import auth from '../utils/auth';
 import RedirectLogin from './Redirect-Login';
+import { useMutation, useQuery } from '@apollo/client';
+import { ADD_JOURNAL_ENTRY } from "../utils/mutations";
+import { QUERY_ME, QUERY_JOURNALS } from "../utils/queries";
 
-import '../../src/assets/css/JournalEntry.css'
+import '../../src/assets/css/JournalEntry.css';
 
 const JournalEntry = () => {
   const [entry, setEntry] = useState("");
   const [entries, setEntries] = useState([]);
-  const lastLoggedIn = "June 25, 2023"; // Placeholder value, replace with actual last login date
-  const challengesCompleted = 10; // Placeholder value, replace with actual number
-  const challengePercent = 0.5; // Placeholder value, replace with actual progress percentage as decimal (0 to 1)
+  const lastLoggedIn = "June 25, 2023";
+  const challengesCompleted = 10;
+  const challengePercent = 0.5;
 
-  // Function to handle changes in the journal entry text
+  const [addJournalEntry] = useMutation(ADD_JOURNAL_ENTRY);
+
   const handleEntryChange = (event) => {
     setEntry(event.target.value);
   };
 
-  // Function to handle saving the journal entry
   const handleSaveEntry = () => {
-    // Get the current timestamp
     const timestamp = new Date().toLocaleString();
 
-    // Save the journal entry and timestamp
-    const newEntry = { entry, timestamp };
-    setEntries([...entries, newEntry]);
+    addJournalEntry({
+      variables: {
+        title: "Journal Entry",
+        body: entry,
+        dateCreated: timestamp,
+      },
+      update(cache, { data: { addJournal } }) {
+        const newEntry = {
+          _id: addJournal._id,
+          title: addJournal.title,
+          body: addJournal.body,
+          dateCreated: addJournal.dateCreated,
+        };
+        setEntries([...entries, newEntry]);
+      },
+    });
 
-    // Clear the journal entry text
     setEntry("");
   };
 
-  // Function to handle deleting a journal entry
   const handleDeleteEntry = (index) => {
     const updatedEntries = [...entries];
     updatedEntries.splice(index, 1);
     setEntries(updatedEntries);
   };
 
+  const { loading: meLoading, data: meData } = useQuery(QUERY_ME);
+  const { loading: journalsLoading, data: journalsData } = useQuery(QUERY_JOURNALS);
+
   if (!auth.loggedIn()) {
     return <RedirectLogin />;
-  } 
+  }
+
+  const journalEntries = journalsData?.me?.journal || [];
 
   return (
     <Box
@@ -52,9 +70,10 @@ const JournalEntry = () => {
       height="100vh"
       padding={2}
       textAlign="center"
-      bgcolor="#FE5720" /* Background color */
-      color="#000009" /* Text color */
-    > <img src={journeyLogo} alt="the journey logo"/>
+      bgcolor="#FE5720"
+      color="#000009"
+    >
+      <img src={journeyLogo} alt="the journey logo" />
      
       <Typography variant="h3" gutterBottom style={{ fontFamily: "Papyrus" }}>
         My Journal
@@ -72,7 +91,7 @@ const JournalEntry = () => {
           className="progress-bar"
           variant="determinate"
           value={challengePercent * 100}
-          style={{ backgroundColor: "#000009",}} /* Progress bar color */
+          style={{ backgroundColor: "#000009" }}
         />
         <TextField
           label="Journal Entry"
@@ -89,8 +108,8 @@ const JournalEntry = () => {
           fullWidth
           style={{
             fontFamily: "Papyrus",
-            backgroundColor: "#E5AB24", /* Button color */
-            color: "#556062" /* Text color */
+            backgroundColor: "#E5AB24",
+            color: "#556062"
           }}
         >
           Save Entry
@@ -107,7 +126,7 @@ const JournalEntry = () => {
         <Typography variant="h6" style={{ fontFamily: "Papyrus" }}>
           Journal Entries:
         </Typography>
-        {entries.map((entry, index) => (
+        {journalEntries.map((entry, index) => (
           <Box
             key={index}
             marginY={1}
@@ -115,9 +134,9 @@ const JournalEntry = () => {
             display="flex"
             alignItems="center"
           >
-            <Typography>{entry.entry}</Typography>
+            <Typography>{entry.title}</Typography>
             <Typography variant="caption" marginLeft={1}>
-              {entry.timestamp}
+              {entry.dateCreated}
             </Typography>
             <IconButton
               color="error"

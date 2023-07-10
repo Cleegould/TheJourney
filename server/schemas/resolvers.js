@@ -79,19 +79,19 @@ const resolvers = {
       }
       throw new AuthenticationError("You need to be logged in!");
     },
-    addJournal: async(parent, { title, description }, context) => {
+    addJournal: async(parent, {title, body, dateCreated}, context) => {
       if (context.user) {
-        const journal = await JournalEntry.create({
+        const journal = await Journal.create({
           title,
-          description,
-          dateCreated: new Date()
+          body,
+          dateCreated,
         });
-        const updateUser = await User.findOneAndUpdate(
-          {_id: context.user._id},
+        const updateJournal = await Journal.findAndModify(
+          {userId: context.user._id},
           {$addToSet: { journal: [journal._id]}},
           {new: true}
         );
-        return journal
+        return updateJournal
       }
       throw new AuthenticationError("You need to be logged in!");
     }
