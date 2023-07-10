@@ -45,7 +45,7 @@ export const ADD_TASK = gql`
 `;
 
 export const ADD_JOURNAL_ENTRY = gql`
-  mutation addJournalEntry($title: String!, $body: String!, $dateCreated: String!) {
+  mutation addJournal($title: String!, $body: String!, $dateCreated: String!) {
     addJournal(title: $title, body: $body, dateCreated: $dateCreated) {
       _id
       title
