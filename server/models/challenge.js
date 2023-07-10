@@ -41,4 +41,6 @@ const challengeSchema = new Schema({
 });
 
 const Challenge = mongoose.model("Challenge", challengeSchema);
+
 module.exports = Challenge;
+

@@ -10,15 +10,25 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import { Link } from 'react-router-dom';
+import auth from '../utils/auth';
 
 // import zIndex from '@mui/material/styles/zIndex';
 
 
-const pages = [{profileName:'Profile',link:'/profile'},{profileName:'Journal',link:'/journal'} ,{profileName:'To-dos',link:'/todo'}  ,{profileName:'Logout',link:'/logout'}];
+const pages = [{profileName:'Profile',link:'/profile'},{profileName:'Journal',link:'/journal'} ,{profileName:'To-dos',link:'/todo'}  ,{profileName:'Logout'}];
 
 function ResponsiveHeader({ handlePageChange }) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
- 
+
+  const endSession = (event) => {
+    console.log(event.target.textContent);
+    if (event.target.textContent ==='Logout' ) {
+      auth.logout()
+    } else{
+      return
+    }
+  };
+
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -87,7 +97,7 @@ function ResponsiveHeader({ handlePageChange }) {
                   handleCloseNavMenu()
                     console.log(`${page.link}`);
                  }} >
-                  <Link to={page.link}><Typography textAlign="center">{page.profileName}</Typography></Link>
+                  <Link  onClick={endSession} to={page.link}><Typography textAlign="center">{page.profileName}</Typography></Link>
                 </MenuItem>
               ))}
             </Menu>
@@ -111,10 +121,10 @@ function ResponsiveHeader({ handlePageChange }) {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page,index) => (
-             <Link to={page.link} ><Button
+             <Link onClick={endSession} to={page.link} ><Button
                 key={index}
                 onClick={() =>{
-                    console.log(`${page.link}`);
+                    // console.log(`${page.link}`);
                     handleCloseNavMenu()
                }}
                 sx={{ my: 2, color: '#E5E6E4', display: 'block' }}

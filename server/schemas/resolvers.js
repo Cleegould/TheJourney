@@ -11,12 +11,12 @@ const resolvers = {
         }
         throw new AuthenticationError("You need to be logged in!");
     },
-  
+
     me: async (parent, args, context) => {
       if (context.user) {
-        return User.findOne({ _id: context.user._id }).populate('challenge');
+        return User.findOne({ _id: context.user._id }).populate("challenge");
       }
-      throw new AuthenticationError('You need to be logged in!');
+      throw new AuthenticationError("You need to be logged in!");
     },
   },
 
@@ -92,10 +92,13 @@ const resolvers = {
           {new: true}
         );
         return journal
+
       }
       throw new AuthenticationError("You need to be logged in!");
     }
   },
 };
 
+l
 module.exports = resolvers;
+
