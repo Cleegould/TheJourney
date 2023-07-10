@@ -1,5 +1,5 @@
 const { AuthenticationError } = require("apollo-server-express");
-const { User, Challenge, Task } = require("../models");
+const { User, Challenge, Task, JournalEntry } = require("../models");
 const { signToken } = require("../utils/auth");
 const { findOne } = require("../models/challenge");
 
@@ -79,19 +79,20 @@ const resolvers = {
       }
       throw new AuthenticationError("You need to be logged in!");
     },
-    addJournal: async(parent, { title, description }, context) => {
+    addJournal: async(parent, { title, description, body }, context) => {
       if (context.user) {
         const journal = await JournalEntry.create({
           title,
           description,
+          body,
           dateCreated: new Date()
         });
         const updateUser = await User.findOneAndUpdate(
           {_id: context.user._id},
-          {$addToSet: { journal: [journal._id]}},
+          {$addToSet: { journals: journal}},
           {new: true}
         );
-        return journal
+        return updateUser
       }
       throw new AuthenticationError("You need to be logged in!");
     }

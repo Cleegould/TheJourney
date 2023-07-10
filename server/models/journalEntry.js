@@ -8,7 +8,8 @@ const journalEntrySchema = new Schema({
         trim: true
     },
     body: {
-        type: String
+        type: String,
+        required: false
     },
     dateCreated: {
         type: Date,
