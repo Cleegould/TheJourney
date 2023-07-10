@@ -1,8 +1,15 @@
 // Creates and exports the Mongoose model for the "Challenge" collection.
-const { Schema, model } = require("mongoose");
+// const { Schema, model } = require("mongoose");
+const mongoose = require('mongoose');
+
+const { Schema } = mongoose;
 
 const challengeSchema = new Schema({
-  name: {
+  title: {
+    type: String,
+    required: true,
+  },
+  description: {
     type: String,
     required: true,
   },
@@ -10,11 +17,21 @@ const challengeSchema = new Schema({
     type: Boolean,
     required: true,
   },
-  dateCreated: {
+  active: {
+    type: Boolean,
+    required: true,
+  },
+  startDate: {
     type: Date,
     required: true,
     default: Date.now  
   },
+  userId: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+    }
+  ],
   tasks: [
     {
       type: Schema.Types.ObjectId,
@@ -23,5 +40,5 @@ const challengeSchema = new Schema({
   ]
 });
 
-const Challenge = model("Challenge", challengeSchema);
+const Challenge = mongoose.model("Challenge", challengeSchema);
 module.exports = Challenge;

@@ -6,44 +6,58 @@ const typeDefs = gql`
     username: String!
     email: String!
     password: String!
-    challenges: [Challenge]
+    journal: [JournalEntry]
   }
 
   type Challenge {
     _id: ID
-    name: String!
     completed: Boolean!
-    dateCreated: Date!
+    title: String!
+    startDate: String!
+    description: String!
+    active: Boolean!
+    tasks: [Task]
+    userID: User
   }
 
   type Task {
     _id: ID
-    name: String!
-    completed: Boolean!
+    taskTitle: String!
+    description: String
+    frequency: Int!
   }
 
   type Auth {
-    token: ID!
+    token: ID
     user: User
 
   }
 
-  type Journal {
+  type JournalEntry {
     _id: ID
     title: String!
     body: String!
-    dateCreated: Date!
+    dateCreated: String!
   }
 
   type Query {
     me: User
-    
+    challenge(userId: ID, active: Boolean) : Challenge
+    tasks: [Task]
+  }
+
+  input TaskInput{
+    description: String
+    type: String
+    frequency: Int
   }
 
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addChallenge(name:String!, completed:Boolean!, dateCreated: Date!)
+    addChallenge(title:String!,  description: String!,startDate: String! input: TaskInput, userID: ID ): Challenge
+    addTask(description: String, taskTitle: String!, frequency: Int!): Challenge
+    addJournal(title:String!, body: String!, dateCreated: String!): JournalEntry
   }
 
  `;

@@ -2,16 +2,21 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const taskSchema = new Schema({
-    taskType: {
+    taskTitle: {
         type: String,
         required: true,
         trim: true
     },
-    body: {
+    description: {
         type: String
+    },
+    frequency: {
+        type: Number,
+        required: true,
+        
     }
+
 });
 
 const Task = mongoose.model('Task', taskSchema);
 module.exports = Task;
-
