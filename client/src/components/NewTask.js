@@ -8,8 +8,6 @@ import TextField from '@mui/material/TextField';
 import { ADD_TASK } from '../utils/mutations';
 import { useMutation } from '@apollo/client';
 
-
-
 const NewTask = () => {
   const [addTask, { error, data }] = useMutation(ADD_TASK);
     const [taskFormData, setTaskFormData] = useState({
@@ -59,7 +57,7 @@ const NewTask = () => {
     <div>
       <form onSubmit={handleSubmit}>
       <div>
-        <TextField
+        <TextField //task input box
         sx={myStyles}
           label="Task"
           placeholder="Placeholder"
@@ -72,7 +70,7 @@ const NewTask = () => {
           onChange={handleChange}
           required
         />
-        <TextField
+        <TextField // description input box
           sx={myStyles}
           label="Description"
           multiline
@@ -86,7 +84,7 @@ const NewTask = () => {
         />
       </div>
       {/* drop down menu */}
-      <div  >
+      <div>
         <FormControl sx={{ m: 1, width: '90%' }}>
         <InputLabel id="dropDownFrequency">Frequency</InputLabel>
           <Select

@@ -7,14 +7,9 @@ import TextField from '@mui/material/TextField';
 // import DialogActions from '@mui/material/DialogActions';
 // import DialogContent from '@mui/material/DialogContent';
 import FormCalender from './FormCalender';
-import '../assets/css/ChallengeForm.css'
-import {useMutation} from '@apollo/client'
-import { ADD_CHALLENGE} from '../utils/mutations'
-
-
-
-
-
+import '../assets/css/ChallengeForm.css';
+import {useMutation} from '@apollo/client';
+import { ADD_CHALLENGE} from '../utils/mutations';
 
 export default function ChallengeForm() {
   const [challengeFormData, setChallengeFormData] = useState({ title: '', description: '',startDate:'' });
@@ -46,41 +41,35 @@ export default function ChallengeForm() {
  
   };
 
-
-
-
-
   return (
     <div>
-  
-        <Card className='challenge-form'>
-       <TextField
+    <Card className='challenge-form'>
+      <TextField
         sx={{paddingInline:'5px'}}   
-           autoFocus
-           margin="dense"
-           label="Challenge name"
-           type="text"
-           name='title'
-           value={challengeFormData.title}
-           onChange={handleInputChange}
-        //    variant="standard"
-         />
-           <TextField
+          autoFocus
+          margin="dense"
+          label="Challenge name"
+          type="text"
+          name='title'
+          value={challengeFormData.title}
+          onChange={handleInputChange}
+          // variant="standard"
+      />
+      <TextField
         sx={{paddingInline:'5px'}}
-         id="filled-multiline-static"
-         label="Challenge Description"
-         multiline
-         rows={3}
-         name='description'
-         value={challengeFormData.description}
-         onChange={handleInputChange}
-         defaultValue="Default Value"
-         variant="filled"
+          id="filled-multiline-static"
+          label="Challenge Description"
+          multiline
+          rows={3}
+          name='description'
+          value={challengeFormData.description}
+          onChange={handleInputChange}
+          defaultValue="Default Value"
+          variant="filled"
        />
        <FormCalender challengeFormData={challengeFormData} setChallengeFormData={setChallengeFormData} />
-       <Button onClick={handleFormSubmit}>Start Challenge</Button>
-        </Card>
-
+      <Button onClick={handleFormSubmit}>Start Challenge</Button>
+    </Card>
     </div>
   );
 }

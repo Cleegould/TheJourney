@@ -5,3 +5,7 @@ const Task = require('./task')
 const JournalEntry = require('./journalEntry')
 
 module.exports = { Challenge, User, Task, JournalEntry };
+
+
+
+

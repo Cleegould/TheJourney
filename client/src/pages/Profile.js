@@ -7,6 +7,7 @@ import RedirectLogin from './Redirect-Login';
 import ChallengeForm from '../components/ChallengeForm';
 import NewTask from '../components/NewTask';
 import { useQuery } from '@apollo/client';
+import ChallengeTasks from '../components/ChallengeTasks';
 
 // import { useEffect } from 'react';
 
@@ -56,20 +57,13 @@ export default function Profile() {
       backgroundColor: '#FE5720',
     },
   }
+
   const {data} = useQuery(QUERY_CHALLENGE)
 
   const challenge = data?.challenge || {} ;
-  const log = () => {
-
-    console.log(challenge);
-
-  }
+  const tasks = challenge.tasks;
+  const log = () => {console.log('tasks: ', tasks)}
   log()
-  // useEffect(() => {
-  //   if (challenge) {
-  //     console.log(challenge);
-  //   }
-  // });
 
   if (!auth.loggedIn()) {
     return <RedirectLogin />;
@@ -77,6 +71,7 @@ export default function Profile() {
 
   return (
     <div className='profile-container'>
+
       {Object.keys(challenge).length !== 0 ? (
         <Paper sx={customStyles} >
             <h2>{format(new Date(), "MM-dd-yyyy")}</h2>
@@ -90,8 +85,7 @@ export default function Profile() {
     </Paper>
 
       )}
-        
-
+      
       
         <Paper sx={customStyles} >
             <h2>Current Challenge</h2>
@@ -100,8 +94,11 @@ export default function Profile() {
 
         </Paper>
         <Paper sx={customStyles} >
-            <h2>extra</h2>
- 
+            <h2>This Challenge's To-Do Tasks</h2>
+        </Paper>
+        <Paper sx={customStyles}>
+        {console.log('tasks to pass: ', tasks)}
+          <ChallengeTasks tasks={tasks} />
         </Paper>
     </div>
   )
