@@ -19,10 +19,10 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
-  journal: [
+  challenges: [
     {
      type: mongoose.Schema.Types.ObjectId,
-      ref: 'JournalEntry',
+      ref: 'Challenge',
     }
   ]
 });

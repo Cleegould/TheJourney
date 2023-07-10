@@ -26,24 +26,31 @@ export const ADD_USER = gql`
 
 export const ADD_CHALLENGE = gql`
   mutation addChallenge($title: String!, $description: String!, $startDate: String!) {
-    addChallenge(title: $title, description: $description, startDate: $startDate ){
+    addChallenge(title: $title, description: $description, startDate: $startDate) {
       title
       description
       startDate
-  
     }
   }
 `;
 
 export const ADD_TASK = gql`
   mutation addTask($taskTitle: String!, $description: String!, $frequency: Int!) {
-    addTask(taskTitle: $taskTitle, description: $description, frequency: $frequency ){
+    addTask(taskTitle: $taskTitle, description: $description, frequency: $frequency) {
       title
       description
       startDate
-  
     }
   }
 `;
 
-
+export const ADD_JOURNAL_ENTRY = gql`
+  mutation addJournalEntry($title: String!, $body: String!, $dateCreated: String!) {
+    addJournal(title: $title, body: $body, dateCreated: $dateCreated) {
+      _id
+      title
+      body
+      dateCreated
+    }
+  }
+`;
