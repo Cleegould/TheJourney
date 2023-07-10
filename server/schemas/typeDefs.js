@@ -70,9 +70,6 @@ const typeDefs = gql`
     addTask(description: String, taskTitle: String!, frequency: Int!): Challenge
 
     addJournal(title:String!, body: String!, dateCreated: String!): JournalEntry
-
-    addJournal(title:String!, body: String!, userID: ID, input: JournalEntryInput): Journal
-
   }
 
  `;
