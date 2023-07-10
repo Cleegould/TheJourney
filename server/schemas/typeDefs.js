@@ -6,7 +6,7 @@ const typeDefs = gql`
     username: String!
     email: String!
     password: String!
-    challenges: [Challenge]
+    journal: [JournalEntry]
   }
 
   type Challenge {
@@ -33,26 +33,33 @@ const typeDefs = gql`
 
   }
 
-  type Journal {
+  type JournalEntry {
     _id: ID
     title: String!
     body: String!
+
+    dateCreated: String!
   }
 
   type Query {
     me: User
     challenge(userId: ID, active: Boolean) : Challenge
+
+    tasks: [Task]
+
   }
 
   input TaskInput{
     description: String
     type: String
     frequency: Int
+
   }
 
   input JournalEntryInput{
     description: String!
     type: String!
+
   }
 
   
@@ -61,7 +68,11 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     addChallenge(title:String!,  description: String!,startDate: String! input: TaskInput, userID: ID ): Challenge
     addTask(description: String, taskTitle: String!, frequency: Int!): Challenge
+
+    addJournal(title:String!, body: String!, dateCreated: String!): JournalEntry
+
     addJournal(title:String!, body: String!, userID: ID, input: JournalEntryInput): Journal
+
   }
 
  `;

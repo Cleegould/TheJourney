@@ -49,6 +49,3 @@ ChatGPT
 
 MIT License
 
-
-
-

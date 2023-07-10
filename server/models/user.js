@@ -19,10 +19,10 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
-  challenges: [
+  journal: [
     {
      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Challenge',
+      ref: 'JournalEntry',
     }
   ]
 });
@@ -39,4 +39,7 @@ userSchema.methods.isCorrectPassword = async function(password) {
 };
 
 const User = mongoose.model('User', userSchema);
+
 module.exports = User;
+
+
