@@ -99,6 +99,5 @@ const resolvers = {
   },
 };
 
-l
-module.exports = resolvers;
 
+module.exports = resolvers;
