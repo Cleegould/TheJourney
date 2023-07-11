@@ -6,7 +6,7 @@ import auth from '../utils/auth';
 import RedirectLogin from './Redirect-Login';
 import { useMutation, useQuery } from '@apollo/client';
 import { ADD_JOURNAL_ENTRY } from "../utils/mutations";
-import { QUERY_ME, QUERY_JOURNALS } from "../utils/queries";
+import { QUERY_ME } from "../utils/queries";
 
 import '../../src/assets/css/JournalEntry.css';
 
@@ -53,13 +53,16 @@ const JournalEntry = () => {
   };
 
   const { loading: meLoading, data: meData } = useQuery(QUERY_ME);
-  const { loading: journalsLoading, data: journalsData } = useQuery(QUERY_JOURNALS);
 
   if (!auth.loggedIn()) {
     return <RedirectLogin />;
   }
 
-  const journalEntries = journalsData?.me?.journal || [];
+  if (meLoading) {
+    return <p>Loading...</p>;
+  }
+
+  const journalEntries = meData?.me?.journals || [];
 
   return (
     <Box
@@ -67,18 +70,18 @@ const JournalEntry = () => {
       flexDirection="column"
       justifyContent="center"
       alignItems="center"
-      height="100vh"
+      minHeight="100vh"
       padding={2}
       textAlign="center"
       bgcolor="#FE5720"
       color="#000009"
     >
       <img src={journeyLogo} alt="the journey logo" />
-     
+
       <Typography variant="h3" gutterBottom style={{ fontFamily: "Papyrus" }}>
         My Journal
       </Typography>
-      
+
       <Box width={400}>
         <Typography variant="h5" gutterBottom style={{ fontFamily: "Papyrus" }}>
           Last Logged In: {lastLoggedIn}
@@ -115,6 +118,7 @@ const JournalEntry = () => {
           Save Entry
         </Button>
       </Box>
+
       <Box
         width={400}
         marginTop={2}
@@ -122,6 +126,9 @@ const JournalEntry = () => {
         flexDirection="column"
         justifyContent="center"
         alignItems="center"
+        maxHeight={300}
+        overflow="auto"
+        bgcolor="#FE5720" /* Adjust the background color */
       >
         <Typography variant="h6" style={{ fontFamily: "Papyrus" }}>
           Journal Entries:
@@ -135,6 +142,7 @@ const JournalEntry = () => {
             alignItems="center"
           >
             <Typography>{entry.title}</Typography>
+            <Typography variant="body2">{entry.body}</Typography> {/* Show the entry body */}
             <Typography variant="caption" marginLeft={1}>
               {entry.dateCreated}
             </Typography>
