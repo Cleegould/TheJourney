@@ -67,7 +67,15 @@ export default function Profile() {
 
   if (!auth.loggedIn()) {
     return <RedirectLogin />;
-  } 
+  }
+  // delete task from task list
+  // const handleDeleteItem = (data) => {
+  //   setDataArray((prevDataArray) => {
+  //     const newDataArray = [...prevDataArray];
+  //     newDataArray.splice(data, 1);
+  //     return newDataArray;
+  //   });
+  // };
 
   return (
     <div className='profile-container'>
@@ -95,10 +103,9 @@ export default function Profile() {
         </Paper>
         <Paper sx={customStyles} >
             <h2>This Challenge's To-Do Tasks</h2>
-        </Paper>
-        <Paper sx={customStyles}>
+
         {console.log('tasks to pass: ', tasks)}
-          <ChallengeTasks tasks={tasks} />
+          {tasks ? <ChallengeTasks tasks={tasks} /> : null} 
         </Paper>
     </div>
   )

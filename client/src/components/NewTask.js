@@ -40,7 +40,9 @@ const NewTask = () => {
         description: '',
         frequency: 0,
       })
+      window.location.reload();
     };
+    
     const [open, setOpen] = React.useState(false);
     const myStyles ={
       margin: 'auto',
@@ -106,7 +108,7 @@ const NewTask = () => {
           </Select>
         </FormControl>
       </div>
-      <Button  sx={{ marginBottom: '10px'}} type="submit" variant="contained" onClick={handleSubmit}>Submit</Button>
+      <Button sx={{ marginBottom: '10px'}} type="submit" variant="contained" onClick={handleSubmit}>Submit</Button>
     </form>
     </div>
   )
