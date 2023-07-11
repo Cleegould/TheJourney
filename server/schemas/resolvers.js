@@ -98,8 +98,29 @@ const resolvers = {
 
       }
       throw new AuthenticationError("You need to be logged in!");
-    }
+    },
+    removeTask: async (parent, { _id }, context) => {
+      if (context.user) {
+        try {
+          const deletedTask = await Task.findByIdAndDelete(_id);
+          if (!deletedTask) {
+            throw new Error('Task not found');
+          }
+          const updatedChallenge = await Challenge.findOneAndUpdate(
+            { userId: context.user._id, active: true },
+            { $pull: { tasks: deletedTask._id } },
+            { new: true }
+          );
+          return updatedChallenge;
+        } catch (error) {
+          //deletion error handling
+          throw new Error(`Failed to delete task: ${error.message}`);
+        }
+      }
+      throw new AuthenticationError("You need to be logged in!");
+    },
   },
+  
 };
 
 
