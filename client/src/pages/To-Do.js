@@ -128,13 +128,15 @@ function nextDisplayed(challengeDate, task) {
       if (!auth.loggedIn()) {
         return <RedirectLogin />;
       } 
+
+      
  
 
   return (
     <main className="to-do-container">
         <Paper sx={customStyles} >
             <h1>{dayjs().format('YYYY-MM-DD')}</h1>
-            {loading ? <h2>Loading...</h2> : 
+            {(data?.challenge == null) ? <h2>Loading...</h2> : 
       data.challenge.tasks.map(task => {
        const takss = isDisplayed(data.challenge.startDate, task)
        console.log(takss);
@@ -147,7 +149,7 @@ function nextDisplayed(challengeDate, task) {
 
         <Paper sx={customStyles} >
             <h1>{dayjs().add(1,'day').format('YYYY-MM-DD')}</h1>
-            {loading ? <h2>Loading...</h2> : 
+            {(data?.challenge == null)? <h2>Loading...</h2> : 
       data.challenge.tasks.map(task => {
        const takss = nextDisplayed(data.challenge.startDate, task)
        console.log(takss);
