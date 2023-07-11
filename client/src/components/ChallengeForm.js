@@ -11,7 +11,7 @@ import '../assets/css/ChallengeForm.css';
 import {useMutation} from '@apollo/client';
 import { ADD_CHALLENGE} from '../utils/mutations';
 
-export default function ChallengeForm() {
+export default function ChallengeForm({challenge}) {
   const [challengeFormData, setChallengeFormData] = useState({ title: '', description: '',startDate:'' });
   const [addChallenge, { error, data }] = useMutation(ADD_CHALLENGE);
 
@@ -23,15 +23,18 @@ export default function ChallengeForm() {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     console.log(challengeFormData);
-    try {
-      const { data } = await addChallenge({
-        variables: { ...challengeFormData },
-      });
-
-      console.log(data);
-    } catch (e) {
-      console.error(e);
+    if (Object.keys(challenge).length == 0) {
+      try {
+        const { data } = await addChallenge({
+          variables: { ...challengeFormData },
+        });
+        window.location.reload(false)
+        console.log(data);
+      } catch (e) {
+        console.error(e);
+      }
     }
+    
 
     // clear form values
     setChallengeFormData({

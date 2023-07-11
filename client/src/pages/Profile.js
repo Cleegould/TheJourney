@@ -89,7 +89,7 @@ export default function Profile() {
       ):(
         <Paper sx={customStyles} >
         <h3> Start New Challenge</h3>
-      <ChallengeForm />
+      <ChallengeForm challenge={challenge} />
     </Paper>
 
       )}
