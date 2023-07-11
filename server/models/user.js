@@ -19,7 +19,7 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
-  journal: [
+  journals: [
     {
      type: mongoose.Schema.Types.ObjectId,
       ref: 'JournalEntry',

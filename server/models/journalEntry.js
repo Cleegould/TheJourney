@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
-const journalEntrySchema = new Schema({
+const journalEntrySchema = new Schema([{
     title: {
         type: String,
         required: true,
@@ -16,7 +16,7 @@ const journalEntrySchema = new Schema({
         required: true,
         default: Date.now
     },
-});
+}]);
 
 const JournalEntry = mongoose.model('JournalEntry', journalEntrySchema);
 

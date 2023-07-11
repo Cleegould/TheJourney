@@ -14,7 +14,8 @@ const resolvers = {
 
     me: async (parent, args, context) => {
       if (context.user) {
-        return User.findOne({ _id: context.user._id }).populate("challenge");
+        return User.findOne({ _id: context.user._id }).populate('journals')
+    
       }
       throw new AuthenticationError("You need to be logged in!");
     },
@@ -89,9 +90,10 @@ const resolvers = {
         });
         const updateUser = await User.findOneAndUpdate(
           {_id: context.user._id},
-          {$addToSet: { journals: journal}},
+          {$addToSet: { journals: journal._id}},
           {new: true}
         );
+        console.log(updateUser)
         return updateUser
 
       }
