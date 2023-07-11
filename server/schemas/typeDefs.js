@@ -42,7 +42,7 @@ const typeDefs = gql`
 
   type Query {
     me: User
-    challenge(userId: ID, active: Boolean) : [ Challenge ]
+    challenge(userId: ID, active: Boolean) :  Challenge 
    tasks: [Task]
   }
 
