@@ -54,3 +54,13 @@ export const ADD_JOURNAL_ENTRY = gql`
     }
   }
 `;
+
+export const REMOVE_TASK = gql`
+  mutation removeTask($_id: ID){
+    removeTask(_id: $ID){
+      title
+      description
+      tasks
+    }
+  }
+`

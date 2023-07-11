@@ -24,6 +24,7 @@ export const QUERY_CHALLENGE = gql`
       description
       tasks {
         taskTitle
+        _id
         description
         frequency
       }
