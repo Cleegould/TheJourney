@@ -54,7 +54,7 @@ function ResponsiveHeader({ handlePageChange }) {
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
+              fontFamily: 'papyrus',
               fontWeight: 700,
               color: '#E5E6E4',
               textDecoration: 'none',
@@ -97,7 +97,7 @@ function ResponsiveHeader({ handlePageChange }) {
                   handleCloseNavMenu()
                     console.log(`${page.link}`);
                  }} >
-                  <Link  onClick={endSession} to={page.link}><Typography textAlign="center">{page.profileName}</Typography></Link>
+                  <Link sx={{fontFamily: 'Papyrus'}} onClick={endSession} to={page.link}><Typography textAlign="center">{page.profileName}</Typography></Link>
                 </MenuItem>
               ))}
             </Menu>
@@ -111,7 +111,7 @@ function ResponsiveHeader({ handlePageChange }) {
               mr: 1,
               display: { xs: 'flex', md: 'none' },
               flexGrow: 1,
-              fontFamily: 'monospace',
+              fontFamily: 'Papyrus',
               fontWeight: 700,
               color: '#E5E6E4',
               textDecoration: 'none',
@@ -121,7 +121,7 @@ function ResponsiveHeader({ handlePageChange }) {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page,index) => (
-             <Link onClick={endSession} to={page.link} ><Button
+             <Link sx={{fontFamily: 'Papyrus'}} onClick={endSession} to={page.link} ><Button
                 key={index}
                 onClick={() =>{
                     // console.log(`${page.link}`);

@@ -12,6 +12,8 @@ import JournalEntry from './pages/journal';
 import TODO from '../src/pages/To-Do'
 import WelcomePage from './components/WelcomePage';
 import Profile from './pages/Profile';
+import { ThemeProvider } from '@mui/material/styles';
+import theme from './Theme.js'; //custom theme import
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -40,6 +42,7 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
+      <ThemeProvider theme={theme}>
         <Navbar />
         <Routes>
           <Route exact path='/' element={<WelcomePage />} />
@@ -48,6 +51,7 @@ function App() {
           <Route exact path="/todo" element={<TODO />} />
           <Route render={() => <h1 className="display-2">Wrong page!</h1>} />
         </Routes>
+        </ThemeProvider>
       </Router>
     </ApolloProvider>
   );
