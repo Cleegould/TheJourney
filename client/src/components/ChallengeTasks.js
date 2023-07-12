@@ -26,14 +26,15 @@ export default function ChallengeTasks({tasks}) {
           <p>{frequencyKey[(item.frequency)-1]}</p>
           <Button sx={{ marginBottom: '10px'}} variant="contained" onClick={async(event) => {
             event.preventDefault()
-            const id = item._id;
-            console.log('const id: ', id)
+            const _id = item._id;
+            console.log('const id: ', _id)
             try {
-              const response = await removeTask({ variables: { id } });
+              const response = await removeTask({ variables: { _id } });
               console.log(response);
             } catch (err) {
             console.error(err);
             }
+            window.location.reload();
           }}>Delete</Button>
           <br />
         </div>

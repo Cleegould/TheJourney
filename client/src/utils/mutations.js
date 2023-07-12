@@ -55,10 +55,13 @@ export const ADD_JOURNAL_ENTRY = gql`
 
 export const REMOVE_TASK = gql`
   mutation removeTask($_id: ID){
-    removeTask(_id: $ID){
+    removeTask(_id: $_id){
       title
       description
-      tasks
+      tasks{
+        taskTitle
+        description
+      }
     }
   }
 `
