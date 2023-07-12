@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { TextField, Button, Box, Typography, IconButton, LinearProgress } from "@mui/material";
-import DeleteIcon from "@mui/icons-material/Delete";
+import { TextField, Button, Box, Typography, LinearProgress } from "@mui/material";
 import journeyLogo from "../images/journey.jpg";
 import auth from '../utils/auth';
 import RedirectLogin from './Redirect-Login';
@@ -13,9 +12,9 @@ import '../../src/assets/css/JournalEntry.css';
 const JournalEntry = () => {
   const [entry, setEntry] = useState("");
   const [entries, setEntries] = useState([]);
-  const lastLoggedIn = "June 25, 2023";
+  const lastLoggedIn = "July 13, 2023";
   const challengesCompleted = 10;
-  const challengePercent = 0.5;
+  const challengePercent = 0.25;
 
   const [addJournalEntry] = useMutation(ADD_JOURNAL_ENTRY);
 
@@ -28,18 +27,18 @@ const JournalEntry = () => {
 
     addJournalEntry({
       variables: {
-        title: "Journal Entry",
+        title: timestamp,
         body: entry,
         dateCreated: timestamp,
       },
       update(cache, { data: { addJournal } }) {
         const newEntry = {
-          _id: addJournal._id,
-          title: addJournal.title,
+          title: timestamp,
           body: addJournal.body,
           dateCreated: addJournal.dateCreated,
         };
         setEntries([...entries, newEntry]);
+        window.location.reload();
       },
     });
 
@@ -133,25 +132,23 @@ const JournalEntry = () => {
         <Typography variant="h6" style={{ fontFamily: "Papyrus" }}>
           Journal Entries:
         </Typography>
-        {journalEntries.map((entry, index) => (
+        {journalEntries.map(({ _id, title, body, dateCreated }) => (
           <Box
-            key={index}
+            key={_id}
             marginY={1}
             textAlign="center"
             display="flex"
             alignItems="center"
           >
-            <Typography>{entry.title}</Typography>
-            <Typography variant="body2">{entry.body}</Typography> {/* Show the entry body */}
-            <Typography variant="caption" marginLeft={1}>
-              {entry.dateCreated}
-            </Typography>
-            <IconButton
-              color="error"
-              onClick={() => handleDeleteEntry(index)}
+             <Typography
+              style={{ width: "200px", fontFamily: "Papyrus" }}
             >
-              <DeleteIcon />
-            </IconButton>
+              {title}
+            </Typography>
+            <Typography variant="body2">---------------------------------------<br/> {body}</Typography> {/* Show the colon between timestamp and entry body */}
+            <Typography variant="caption" marginLeft={1}>
+              
+            </Typography>
           </Box>
         ))}
       </Box>
