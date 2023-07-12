@@ -102,7 +102,7 @@ const resolvers = {
     removeTask: async (parent, { _id }, context) => {
       if (context.user) {
         try {
-          const deletedTask = await Task.findByIdAndDelete(_id);
+          const deletedTask = await Task.findByIdAndDelete({_id: _id});
           if (!deletedTask) {
             throw new Error('Task not found');
           }
