@@ -9,6 +9,8 @@ import { QUERY_ME } from "../utils/queries";
 
 import '../../src/assets/css/JournalEntry.css';
 
+const fontType = 'papyrus'
+
 const JournalEntry = () => {
   const [entry, setEntry] = useState("");
   const [entries, setEntries] = useState([]);
@@ -78,15 +80,15 @@ const JournalEntry = () => {
     >
       <img src={journeyLogo} alt="the journey logo" />
 
-      <Typography variant="h3" gutterBottom style={{ fontFamily: "Papyrus" }}>
+      <Typography variant="h3" gutterBottom style={{ fontFamily: fontType }}>
         My Journal
       </Typography>
 
       <Box width={400}>
-        <Typography variant="h5" gutterBottom style={{ fontFamily: "Papyrus" }}>
+        <Typography variant="h5" gutterBottom style={{ fontFamily: fontType }}>
           Last Logged In: {lastLoggedIn}
         </Typography>
-        <Typography variant="h5" gutterBottom style={{ fontFamily: "Papyrus" }}>
+        <Typography variant="h5" gutterBottom style={{ fontFamily: fontType }}>
           Challenges Completed: {challengesCompleted}
         </Typography>
         Current Challenge Progress
@@ -110,7 +112,7 @@ const JournalEntry = () => {
           onClick={handleSaveEntry}
           fullWidth
           style={{
-            fontFamily: "Papyrus",
+            fontFamily: fontType,
             backgroundColor: "#E5AB24",
             color: "#556062"
           }}
@@ -130,7 +132,7 @@ const JournalEntry = () => {
         overflow="auto"
         bgcolor="#FE5720" /* Adjust the background color */
       >
-        <Typography variant="h6" style={{ fontFamily: "Papyrus" }}>
+        <Typography variant="h6" style={{ fontFamily: fontType }}>
           Journal Entries:
         </Typography>
         {journalEntries.map(({ _id, title, body, dateCreated }) => (
@@ -142,7 +144,7 @@ const JournalEntry = () => {
             alignItems="center"
           >
              <Typography
-              style={{ width: "200px", fontFamily: "Papyrus" }}
+              style={{ width: "200px", fontFamily: fontType }}
             >
               {title}
             </Typography>

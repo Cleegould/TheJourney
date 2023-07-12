@@ -8,6 +8,8 @@ import ChallengeForm from '../components/ChallengeForm';
 import NewTask from '../components/NewTask';
 import { useQuery } from '@apollo/client';
 import ChallengeTasks from '../components/ChallengeTasks';
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
 
 // import { useEffect } from 'react';
 
@@ -68,45 +70,52 @@ export default function Profile() {
   if (!auth.loggedIn()) {
     return <RedirectLogin />;
   }
-  // delete task from task list
-  // const handleDeleteItem = (data) => {
-  //   setDataArray((prevDataArray) => {
-  //     const newDataArray = [...prevDataArray];
-  //     newDataArray.splice(data, 1);
-  //     return newDataArray;
-  //   });
-  // };
 
   return (
-    <div className='profile-container'>
+    <Box className='profile-container'>
+    <Grid 
+      container 
+      spacing={{ xs: 2, md: 3 }} 
+      columns={{ xs: 4, sm: 8, md: 12 }} 
+      direction="row"
+      justifyContent="center"
+      alignItems="top"
+      flex-wrap= "wrap"
+      >
 
-      {Object.keys(challenge).length !== 0 ? (
+      <Grid item xs={12}
+      alignItems="center">
         <Paper sx={customStyles} >
+          <h2>Current Challenge</h2>
+          <h4>Title: {challenge.title}</h4>
+          <p> Description: {challenge.description}</p>
+        </Paper>
+      </Grid>
+
+      <Grid item xs={2} sm={3} md={4}>
+        {Object.keys(challenge).length !== 0 ? (
+          <Paper sx={customStyles} >
             <h2>{format(new Date(), "MM-dd-yyyy")}</h2>
             <h2>profile</h2>
-          <NewTask />
-        </Paper>
-      ):(
-        <Paper sx={customStyles} >
-        <h3> Start New Challenge</h3>
-      <ChallengeForm challenge={challenge} />
-    </Paper>
+            <NewTask />
+          </Paper>
+        ):(
+          <Paper sx={customStyles} >
+            <h3> Start New Challenge</h3>
+            <ChallengeForm challenge={challenge} />
+          </Paper>
+        )}
+      </Grid>   
 
-      )}
-      
-      
+      <Grid item xs={2} sm={3} md={4}>
         <Paper sx={customStyles} >
-            <h2>Current Challenge</h2>
-            <h4>Title: {challenge.title}</h4>
-            <p> Description: {challenge.description}</p>
-
-        </Paper>
-        <Paper sx={customStyles} >
-            <h2>This Challenge's To-Do Tasks</h2>
-
-        {console.log('tasks to pass: ', tasks)}
+          <h2>This Challenge's To-Do Tasks</h2>
+          {/* {console.log('tasks to pass: ', tasks)} */}
           {tasks ? <ChallengeTasks tasks={tasks} /> : null} 
         </Paper>
-    </div>
+      </Grid>
+
+    </Grid>
+    </Box>
   )
 }
