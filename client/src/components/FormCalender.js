@@ -5,9 +5,10 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
 
 export default function DateCalendarValue({challengeFormData,setChallengeFormData}) {
-  const [value, setValue] = React.useState(dayjs('2022-04-17'));
+  const [value, setValue] = React.useState(dayjs());
 const updateDate = () =>{
-    setChallengeFormData({...challengeFormData, startDate: value})
+  console.log(value.format('YYYY-MM-DD'));
+    setChallengeFormData({...challengeFormData, startDate: value.format('YYYY-MM-DD')})
 }
 
 
