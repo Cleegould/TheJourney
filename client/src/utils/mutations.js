@@ -48,9 +48,7 @@ export const ADD_JOURNAL_ENTRY = gql`
   mutation addJournal($title: String!, $body: String!, $dateCreated: String!) {
     addJournal(title: $title, body: $body, dateCreated: $dateCreated) {
       _id
-      title
-      body
-      dateCreated
+     username
     }
   }
 `;

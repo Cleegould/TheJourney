@@ -99,6 +99,7 @@ const resolvers = {
       }
       throw new AuthenticationError("You need to be logged in!");
     },
+
     removeTask: async (parent, { _id }, context) => {
       if (context.user) {
         try {
@@ -106,12 +107,15 @@ const resolvers = {
           if (!deletedTask) {
             throw new Error('Task not found');
           }
+
           const updatedChallenge = await Challenge.findOneAndUpdate(
             { userId: context.user._id, active: true },
             { $pull: { tasks: deletedTask._id } },
             { new: true }
           );
+
           return updatedChallenge;
+
         } catch (error) {
           //deletion error handling
           throw new Error(`Failed to delete task: ${error.message}`);
@@ -122,6 +126,4 @@ const resolvers = {
   },
   
 };
-
-
-module.exports = resolvers;
+    module.exports = resolvers;

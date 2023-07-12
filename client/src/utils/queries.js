@@ -6,7 +6,7 @@ export const QUERY_ME = gql`
       _id
       username
       email
-      journal {
+      journals {
         _id
         title
         body
@@ -27,20 +27,6 @@ export const QUERY_CHALLENGE = gql`
         _id
         description
         frequency
-      }
-    }
-  }
-`;
-
-export const QUERY_JOURNALS = gql`
-  query journals {
-    me {
-      _id
-      journal {
-        _id
-        title
-        body
-        dateCreated
       }
     }
   }
