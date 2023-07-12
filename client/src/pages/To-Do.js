@@ -26,8 +26,8 @@ const TODO = () => {
   // logTask()
   dayjs.extend(relativeTime);
 
-  const markedDays = (frequency) => {
-    let startDate = dayjs('2023-07-01');
+  const markedDays = (date,frequency) => {
+    let startDate = dayjs(date);
     let eventDate = startDate.add(frequency, 'day');
     let endDate = startDate.add(30, 'day');
     let dates = [];
@@ -57,7 +57,7 @@ const TODO = () => {
   function isDisplayed(challengeDate, task) {
     // console.log(task);
     const takss =[]
-    const taskDays = markedDays(task.frequency, dayjs(challengeDate))
+    const taskDays = markedDays(dayjs(challengeDate),task.frequency)
     const today = dayjs().format('YYYY-MM-DD')
     if (taskDays.includes(today)) {
       takss.push(task.taskTitle)
