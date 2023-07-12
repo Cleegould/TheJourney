@@ -1,9 +1,18 @@
+.to-do-container{
+  height: 100vh;
+  background-image: url('../images/image.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 
+  
+
+}
 
 @media (max-width: 320px)  {
     .to-do-container{
         /* height: 100vh; */
-        background-color: #000009;
+        background-image: #000009;
         display: flex;
         /* justify-content: center; */
         align-items: center;

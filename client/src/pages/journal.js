@@ -66,6 +66,7 @@ const JournalEntry = () => {
 
   return (
     <Box
+    className="journal-container"
       display="flex"
       flexDirection="column"
       justifyContent="center"

@@ -1,3 +1,11 @@
+.journal-container{
+  height: 100vh;
+  background-image: url('../images/image.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
 .progress-bar {
     height: 100px; /* Increase the height as desired */
   }
