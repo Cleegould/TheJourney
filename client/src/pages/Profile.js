@@ -90,7 +90,7 @@ export default function Profile() {
       <Paper sx={{ 
           display: 'flex',
           justifyContent: 'center' ,
-          backgroundColor: '#FE5720',
+          backgroundColor: '#F6713C',
           textAlign: 'center',
           marginTop: '20px',
           marginInline: '20px',
