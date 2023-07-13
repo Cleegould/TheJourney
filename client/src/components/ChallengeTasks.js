@@ -24,7 +24,7 @@ export default function ChallengeTasks({tasks}) {
           <p>{item.taskTitle}</p>
           <p>{item.description}</p>
           <p>{frequencyKey[(item.frequency)-1]}</p>
-          <Button sx={{ marginBottom: '10px'}} variant="contained" onClick={async(event) => {
+          <Button sx={{ marginBottom: '10px', backgroundColor:'black', color: "#E5AB24"}} variant="contained" onClick={async(event) => {
             event.preventDefault()
             const _id = item._id;
             console.log('const id: ', _id)

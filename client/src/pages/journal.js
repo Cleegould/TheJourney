@@ -114,8 +114,8 @@ const JournalEntry = () => {
           fullWidth
           style={{
             fontFamily: fontType,
-            backgroundColor: "#E5AB24",
-            color: "#556062"
+            backgroundColor:'black',
+            color: "#E5AB24"
           }}
         >
           Save Entry

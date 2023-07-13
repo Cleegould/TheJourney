@@ -19,7 +19,7 @@ return(
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            backgroundColor: '#FE5720',
+            backgroundColor: '#F6713C',
         }}>
             <h1>Start Your Journey</h1>
             <div className="welcome-btn">

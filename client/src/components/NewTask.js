@@ -107,7 +107,7 @@ const NewTask = () => {
           </Select>
         </FormControl>
       </div>
-      <Button sx={{ marginBottom: '10px'}} type="submit" variant="contained" onClick={handleSubmit}>Submit</Button>
+      <Button sx={{ marginBottom: '10px', backgroundColor:'black',color: "#E5AB24"}} type="submit" variant="contained" onClick={handleSubmit}>Submit</Button>
     </form>
     </div>
   )
