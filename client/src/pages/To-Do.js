@@ -16,6 +16,8 @@ import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import ImageIcon from '@mui/icons-material/Image';
 import Divider from '@mui/material/Divider';
+import Checkbox from "../components/checkbox";
+import UpcomingIcon from '@mui/icons-material/Upcoming';
 
 const TODO = () => {
   const { loading, error, data } = useQuery(QUERY_CHALLENGE);
@@ -166,7 +168,7 @@ const TODO = () => {
     },
     "@media (min-width: 1281px)": {
       //   minWidth: 500,
-      width: 400,
+      width: '30%',
       textAlign: "center",
       marginTop: "20px",
       marginInline: "20px",
@@ -182,12 +184,10 @@ const TODO = () => {
        <div className="todo-header"  >
        <Paper sx={customStyles}>
         <h1 >MY Weekly To-Do's</h1>
-       
       </Paper>
-       </div>
-  <div className="to-do-container">
-  <Paper sx={customStyles}>
+      <Paper sx={customStyles}>
         <h1>{dayjs().format("YYYY-MM-DD")}</h1>
+        <h2>Todays Tasks</h2>
         <List
       sx={{
         width: '90%',
@@ -206,9 +206,7 @@ const TODO = () => {
               <Divider variant="inset" component="li" />
               <ListItem>
                 <ListItemAvatar>
-                  <Avatar>
-                    <ImageIcon />
-                  </Avatar>
+                 <Checkbox/>
                 </ListItemAvatar>
                 <ListItemText primary={takss}  />
               </ListItem>
@@ -219,6 +217,14 @@ const TODO = () => {
         )}
     </List>
       </Paper>
+      <div style={{ marginTop: '25px',width:'90%',backgroundColor:'black', height:'2px'}} ></div>
+      <Paper sx={customStyles}>
+        <h1>Weekly outlook</h1>
+
+      </Paper>
+       </div>
+  <div className="to-do-container">
+
       
 
       <Paper sx={customStyles}>
@@ -234,6 +240,7 @@ const TODO = () => {
           data.challenge.tasks.map((task) => {
             const takss = nextDisplayed(data.challenge.startDate, task);
             console.log(takss);
+            
             if (takss.length === 0) {
               return null
             }
@@ -243,9 +250,7 @@ const TODO = () => {
               <Divider variant="inset" component="li" />
               <ListItem>
                 <ListItemAvatar>
-                  <Avatar>
-                    <ImageIcon />
-                  </Avatar>
+                <UpcomingIcon  color="action"  />
                 </ListItemAvatar>
                 <ListItemText primary={takss}  />
               </ListItem>
@@ -277,9 +282,7 @@ const TODO = () => {
               <Divider variant="inset" component="li" />
               <ListItem>
                 <ListItemAvatar>
-                  <Avatar>
-                    <ImageIcon />
-                  </Avatar>
+                <UpcomingIcon  color="action"  />
                 </ListItemAvatar>
                 <ListItemText primary={takss}  />
               </ListItem>
@@ -311,9 +314,7 @@ const TODO = () => {
               <Divider variant="inset" component="li" />
               <ListItem>
                 <ListItemAvatar>
-                  <Avatar>
-                    <ImageIcon />
-                  </Avatar>
+                <UpcomingIcon  color="action"  />
                 </ListItemAvatar>
                 <ListItemText primary={takss}  />
               </ListItem>
@@ -345,9 +346,7 @@ const TODO = () => {
               <Divider variant="inset" component="li" />
               <ListItem>
                 <ListItemAvatar>
-                  <Avatar>
-                    <ImageIcon />
-                  </Avatar>
+                <UpcomingIcon  color="action"  />
                 </ListItemAvatar>
                 <ListItemText primary={takss}  />
               </ListItem>
@@ -379,9 +378,7 @@ const TODO = () => {
               <Divider variant="inset" component="li" />
               <ListItem>
                 <ListItemAvatar>
-                  <Avatar>
-                    <ImageIcon />
-                  </Avatar>
+                <UpcomingIcon  color="action"  />
                 </ListItemAvatar>
                 <ListItemText primary={takss}  />
               </ListItem>
@@ -413,9 +410,7 @@ const TODO = () => {
               <Divider variant="inset" component="li" />
               <ListItem>
                 <ListItemAvatar>
-                  <Avatar>
-                    <ImageIcon />
-                  </Avatar>
+                <UpcomingIcon  color="action"  />
                 </ListItemAvatar>
                 <ListItemText primary={takss}  />
               </ListItem>
