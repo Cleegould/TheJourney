@@ -1,5 +1,5 @@
 .task-container{
-  height: 100vh;
+  /* height: 100vh; */
   background-image: url('../images/image.png');
   background-repeat: no-repeat;
   background-position: center;
@@ -97,7 +97,7 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        align-items: baseline;
+        align-items: b;
 
         padding-top: 20px;
         padding-bottom:20px ;
