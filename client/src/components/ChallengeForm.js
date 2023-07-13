@@ -41,7 +41,9 @@ export default function ChallengeForm({challenge}) {
       title: '',
       description: '',
     });
- 
+
+    
+    window.location.reload();
   };
 
   return (

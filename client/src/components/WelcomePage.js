@@ -5,7 +5,6 @@ import { Card } from "@mui/material";
 import '../assets/css/WelcomePage.css'
 
 export default function WelcomePage(){
-     
 
 return(
     <div className="welcome-page">
@@ -20,13 +19,10 @@ return(
         }}>
             <h1>Start Your Journey</h1>
             <div className="welcome-btn">
-        <LogInForm />
-        <SingUpForm />
-        </div>
+                <LogInForm />
+                <SingUpForm />
+            </div>
         </Card>
- 
-
     </div>
-)
-
+  )
 }
