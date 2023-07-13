@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { TextField, Button, Box, Typography, LinearProgress } from "@mui/material";
-import journeyLogo from "../images/journey.jpg";
+import journeyLogo from "../images/journey1245.png";
 import auth from '../utils/auth';
 import RedirectLogin from './Redirect-Login';
 import { useMutation, useQuery } from '@apollo/client';
@@ -76,7 +76,7 @@ const JournalEntry = () => {
       padding={2}
       textAlign="center"
       bgcolor="#FE5720"
-      color="#000009"
+      color="white"
     >
       <img src={journeyLogo} alt="the journey logo" />
 
@@ -106,6 +106,7 @@ const JournalEntry = () => {
           onChange={handleEntryChange}
           fullWidth
           margin="normal"
+          
         />
         <Button
           variant="contained"
@@ -130,7 +131,8 @@ const JournalEntry = () => {
         alignItems="center"
         maxHeight={300}
         overflow="auto"
-        bgcolor="#FE5720" /* Adjust the background color */
+        color="white"
+        bgcolor="" /* Adjust the background color */
       >
         <Typography variant="h6" style={{ fontFamily: fontType }}>
           Journal Entries:

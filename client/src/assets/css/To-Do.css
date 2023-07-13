@@ -1,18 +1,33 @@
-.to-do-container{
+.task-container{
   height: 100vh;
   background-image: url('../images/image.png');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
   
 
 }
 
+.todo-header{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 15px;
+}
+
+
+
+
 @media (max-width: 320px)  {
     .to-do-container{
-        /* height: 100vh; */
-        background-image: #000009;
+        height: 50%;
+
         display: flex;
         /* justify-content: center; */
         align-items: center;
@@ -28,8 +43,8 @@
   }
     @media (min-width: 321px) and (max-width: 600px) {
         .to-do-container{
-            height: 100vh;
-            background-color: #000009;
+            height: 50%;
+
             display: flex;
             /* justify-content: center; */
             align-items: center;
@@ -44,8 +59,8 @@
   }
     @media (min-width: 601px) and (max-width: 960px) {
         .to-do-container{
-            height: 100vh;
-            background-color: #000009;
+            height: 50%;
+
             display: flex;
             /* justify-content: center; */
             align-items: center;
@@ -60,8 +75,8 @@
   }
   @media (min-width: 961px) and (max-width: 1280px) {
     .to-do-container{
-        height: 100vh;
-        background-color: #000009;
+        height: 50%;
+
         display: flex;
         /* justify-content: center; */
         align-items: center;
@@ -77,12 +92,13 @@
 
   @media (min-width: 1281px) {
     .to-do-container{
-        height: 100vh;
-        background-color: #000009;
+        height: 50%;
+       
         display: flex;
+        flex-wrap: wrap;
         justify-content: center;
-        align-items: center;
-        /* flex-direction: column; */
+        align-items: baseline;
+
         padding-top: 20px;
         padding-bottom:20px ;
 
