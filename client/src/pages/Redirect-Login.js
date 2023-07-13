@@ -14,7 +14,7 @@ export default function RedirectLogin() {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        backgroundColor: '#FE5720',
+        backgroundColor: '#F6713C',
     }}>
         <h1>Log in to see your information.<Link to='/'>Log in!</Link></h1>
 

@@ -40,7 +40,7 @@ function ResponsiveHeader({ handlePageChange }) {
   return (
     <AppBar sx={{
       height:' 10%',
-    backgroundColor: 'rgb(101, 101, 66)',
+    backgroundColor: '#F6713C',
     zIndex: '10', 
   
     }} position="static">

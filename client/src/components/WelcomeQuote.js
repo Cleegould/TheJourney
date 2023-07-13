@@ -30,7 +30,7 @@ export default function Quote() {
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
-      backgroundColor: '#FE5720',
+      backgroundColor: '#F6713C',
       marginTop: '20px'
   }}>
       <h1>"{quoteValue.content}"<br/>-<em>{quoteValue.author}</em></h1>

@@ -23,14 +23,14 @@ export default function Profile() {
       // width: 300,
       textAlign: 'center',
       margin: '20px',
-      backgroundColor: '#FE5720',
+      backgroundColor: '#F6713C',
     },
     '@media (min-width: 321px) and (max-width: 600px)' : {
       // minWidth: 320,
       // maxWidth:400,
       textAlign: 'center',
       margin: '20px',
-      backgroundColor: '#FE5720',
+      backgroundColor: '#F6713C',
     },
     '@media (min-width: 601px) and (max-width: 960px)' : {
       // minWidth: 333,
@@ -38,21 +38,21 @@ export default function Profile() {
       textAlign: 'center',
       margin: '20px',
       marginInline:'20px',
-      backgroundColor: '#FE5720',
+      backgroundColor: '#F6713C',
     },
     '@media (min-width: 961px) and (max-width: 1280px)': {
       // minWidth: 425,
       textAlign: 'center',
       margin: '20px',
       marginInline:'20px',
-      backgroundColor: '#FE5720',
+      backgroundColor: '#F6713C',
     },
     '@media (min-width: 1281px)': {
       // width: 400,
       textAlign: 'center',
       margin: '20px',
       marginInline: '20px',
-      backgroundColor: '#FE5720',
+      backgroundColor: '#F6713C',
     },
   }
 

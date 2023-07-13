@@ -141,7 +141,7 @@ const TODO = () => {
       width: 300,
       textAlign: "center",
       marginTop: "20px",
-      backgroundColor: "#FE5720",
+      backgroundColor: "#F6713C",
     },
     "@media (min-width: 321px) and (max-width: 600px)": {
       minWidth: 300,
@@ -149,14 +149,14 @@ const TODO = () => {
 
       textAlign: "center",
       marginTop: "20px",
-      backgroundColor: "#FE5720",
+      backgroundColor: "#F6713C",
     },
     "@media (min-width: 601px) and (max-width: 960px)": {
       // minWidth: 400,
       width: 500,
       textAlign: "center",
       marginTop: "20px",
-      backgroundColor: "#FE5720",
+      backgroundColor: "#F6713C",
     },
     "@media (min-width: 961px) and (max-width: 1280px)": {
       //   minWidth: 400,
@@ -164,7 +164,7 @@ const TODO = () => {
       //   height: 400 ,
       textAlign: "center",
       marginTop: "20px",
-      backgroundColor: "#FE5720",
+      backgroundColor: "#F6713C",
     },
     "@media (min-width: 1281px)": {
       //   minWidth: 500,
@@ -172,7 +172,7 @@ const TODO = () => {
       textAlign: "center",
       marginTop: "20px",
       marginInline: "20px",
-      backgroundColor: "#FE5720",
+      backgroundColor: "#F6713C",
     },
   };
   if (!auth.loggedIn()) {
@@ -183,7 +183,7 @@ const TODO = () => {
     <main className="task-container">
        <div className="todo-header"  >
        <Paper sx={customStyles}>
-        <h1 >MY Weekly To-Do's</h1>
+        <h1 >My Weekly To-Do's</h1>
       </Paper>
       <Paper sx={customStyles}>
         <h1>{dayjs().format("YYYY-MM-DD")}</h1>
