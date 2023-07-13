@@ -194,7 +194,7 @@ const TODO = () => {
       }}
     >
         {data?.challenge == null ? (
-          <h2>No tasks scheduled for today!</h2>
+          null
         ) : (
           data.challenge.tasks.map((task) => {
             const takss = isDisplayed(data.challenge.startDate, task);
@@ -235,7 +235,7 @@ const TODO = () => {
       }}
     >
         {data?.challenge == null ? (
-          <h2>No tasks scheduled for today!</h2>
+          null
         ) : (
           data.challenge.tasks.map((task) => {
             const takss = nextDisplayed(data.challenge.startDate, task);
@@ -270,7 +270,7 @@ const TODO = () => {
       }}
     >
         {data?.challenge == null ? (
-          <h2>No tasks scheduled for today!</h2>
+          null
         ) : (
           data.challenge.tasks.map((task) => {
             const takss = thirdDisplayed(data.challenge.startDate, task);
@@ -302,7 +302,7 @@ const TODO = () => {
       }}
     >
         {data?.challenge == null ? (
-          <h2>No tasks scheduled for today!</h2>
+         null
         ) : (
           data.challenge.tasks.map((task) => {
             const takss = fourthDisplayed(data.challenge.startDate, task);
@@ -334,7 +334,7 @@ const TODO = () => {
       }}
     >
         {data?.challenge == null ? (
-          <h2>No tasks scheduled for today!</h2>
+          null
         ) : (
           data.challenge.tasks.map((task) => {
             const takss = fifthDisplayed(data.challenge.startDate, task);
@@ -366,7 +366,7 @@ const TODO = () => {
       }}
     >
         {data?.challenge == null ? (
-          <h2>No tasks scheduled for today!</h2>
+          null
         ) : (
           data.challenge.tasks.map((task) => {
             const takss = sixthDisplayed(data.challenge.startDate, task);
@@ -398,7 +398,7 @@ const TODO = () => {
       }}
     >
         {data?.challenge == null ? (
-          <h2>No tasks scheduled for today!</h2>
+          null
         ) : (
           data.challenge.tasks.map((task) => {
             const takss = seventhDisplayed(data.challenge.startDate, task);
