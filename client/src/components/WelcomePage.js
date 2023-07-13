@@ -9,15 +9,6 @@ import Quote from "./WelcomeQuote";
 
 
 export default function WelcomePage(){
-    
-    // useEffect(() => {
-    //     try {
-        
-    //     } catch (err) {
-    //       console.error(err);
-    //     }
-    //   });
-
 
 return(
     <div className="welcome-page">
@@ -32,14 +23,12 @@ return(
         }}>
             <h1>Start Your Journey</h1>
             <div className="welcome-btn">
-        <LogInForm />
-        <SingUpForm />
-        </div>
+                <LogInForm />
+                <SingUpForm />
+            </div>
         </Card>
         <Quote/>
  
-
     </div>
-)
-
+  )
 }

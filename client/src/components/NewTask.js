@@ -85,8 +85,7 @@ const NewTask = () => {
           required
         />
       </div>
-      {/* drop down menu */}
-      <div>
+      <div> {/* drop down menu */}
         <FormControl sx={{ m: 1, width: '90%' }}>
         <InputLabel id="dropDownFrequency">Frequency</InputLabel>
           <Select

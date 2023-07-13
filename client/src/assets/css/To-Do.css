@@ -1,5 +1,5 @@
 .task-container{
-  height: 100vh;
+  /* height: 100vh; */
   background-image: url('../images/image.png');
   background-repeat: no-repeat;
   background-position: center;
@@ -16,8 +16,13 @@
   width: 100%;
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
   padding-top: 15px;
 }
+
+
+
 
 @media (max-width: 320px)  {
     .to-do-container{
@@ -90,9 +95,10 @@
         height: 50%;
        
         display: flex;
+        flex-wrap: wrap;
         justify-content: center;
-        align-items: center;
-        /* flex-direction: column; */
+        align-items: b;
+
         padding-top: 20px;
         padding-bottom:20px ;
 

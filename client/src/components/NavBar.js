@@ -13,7 +13,7 @@ import { Link } from 'react-router-dom';
 import auth from '../utils/auth';
 
 // import zIndex from '@mui/material/styles/zIndex';
-
+const fontType = 'papyrus'
 
 const pages = [{profileName:'Profile',link:'/profile'},{profileName:'Journal',link:'/journal'} ,{profileName:'To-dos',link:'/todo'}  ,{profileName:'Logout'}];
 
@@ -54,7 +54,7 @@ function ResponsiveHeader({ handlePageChange }) {
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
-              fontFamily: 'papyrus',
+              fontFamily: fontType,
               fontWeight: 700,
               color: '#E5E6E4',
               textDecoration: 'none',
@@ -97,7 +97,7 @@ function ResponsiveHeader({ handlePageChange }) {
                   handleCloseNavMenu()
                     console.log(`${page.link}`);
                  }} >
-                  <Link sx={{fontFamily: 'Papyrus'}} onClick={endSession} to={page.link}><Typography textAlign="center">{page.profileName}</Typography></Link>
+                  <Link sx={{fontFamily: fontType}} onClick={endSession} to={page.link}><Typography textAlign="center">{page.profileName}</Typography></Link>
                 </MenuItem>
               ))}
             </Menu>
@@ -111,7 +111,7 @@ function ResponsiveHeader({ handlePageChange }) {
               mr: 1,
               display: { xs: 'flex', md: 'none' },
               flexGrow: 1,
-              fontFamily: 'Papyrus',
+              fontFamily: fontType,
               fontWeight: 700,
               color: '#E5E6E4',
               textDecoration: 'none',
@@ -121,7 +121,7 @@ function ResponsiveHeader({ handlePageChange }) {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page,index) => (
-             <Link sx={{fontFamily: 'Papyrus'}} onClick={endSession} to={page.link} ><Button
+             <Link sx={{fontFamily: fontType}} onClick={endSession} to={page.link} ><Button
                 key={index}
                 onClick={() =>{
                     // console.log(`${page.link}`);
