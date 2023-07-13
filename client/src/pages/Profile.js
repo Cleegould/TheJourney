@@ -19,42 +19,38 @@ export default function Profile() {
 
   const customStyles = {
     '@media (max-width: 320px)' : {
-      minWidth: 300,
-      width: 300,
+      // minWidth: 300,
+      // width: 300,
       textAlign: 'center',
-      marginTop: '20px',
+      margin: '20px',
       backgroundColor: '#FE5720',
     },
     '@media (min-width: 321px) and (max-width: 600px)' : {
-      minWidth: 320,
-      maxWidth:400,
-      
+      // minWidth: 320,
+      // maxWidth:400,
       textAlign: 'center',
-      marginTop: '20px',
+      margin: '20px',
       backgroundColor: '#FE5720',
     },
     '@media (min-width: 601px) and (max-width: 960px)' : {
-      minWidth: 333,
-      maxWidth: 500,
+      // minWidth: 333,
+      // maxWidth: 500,
       textAlign: 'center',
-      marginTop: '20px',
+      margin: '20px',
       marginInline:'20px',
       backgroundColor: '#FE5720',
     },
     '@media (min-width: 961px) and (max-width: 1280px)': {
-      minWidth: 425,
- 
-    //   height: 400 ,
+      // minWidth: 425,
       textAlign: 'center',
-      marginTop: '20px',
+      margin: '20px',
       marginInline:'20px',
       backgroundColor: '#FE5720',
     },
     '@media (min-width: 1281px)': {
-    //   minWidth: 500,
-      width: 400,
+      // width: 400,
       textAlign: 'center',
-      marginTop: '20px',
+      margin: '20px',
       marginInline: '20px',
       backgroundColor: '#FE5720',
     },
@@ -83,16 +79,37 @@ export default function Profile() {
       flex-wrap= "wrap"
       >
 
-      <Grid item xs={12}
-      alignItems="center">
-        <Paper sx={customStyles} >
-          <h2>Current Challenge</h2>
-          <h4>Title: {challenge.title}</h4>
-          <p> Description: {challenge.description}</p>
+      <Grid item 
+      xs={12}
+      alignItems="center"
+      >
+      {Object.keys(challenge).length !== 0 ? (
+        <Grid item 
+        alignItems="center">
+      
+      <Paper sx={{ 
+          display: 'flex',
+          justifyContent: 'center' ,
+          backgroundColor: '#FE5720',
+          textAlign: 'center',
+          marginTop: '20px',
+          marginInline: '20px',
+          }}>
+          <div>
+            <h2>Current Challenge</h2>
+            <h3>{challenge.title}</h3>
+            <p>{challenge.description}</p>
+          </div>
         </Paper>
       </Grid>
+        ):(null)}
+        
+      </Grid>
 
-      <Grid item xs={2} sm={3} md={4}>
+      <Grid item 
+      xs={2} sm={3} md={4}
+      alignItems="center">
+
         {Object.keys(challenge).length !== 0 ? (
           <Paper sx={customStyles} >
             <h2>{format(new Date(), "MM-dd-yyyy")}</h2>
@@ -107,13 +124,19 @@ export default function Profile() {
         )}
       </Grid>   
 
-      <Grid item xs={2} sm={3} md={4}>
+      {Object.keys(challenge).length !== 0 ? (
+        <Grid item 
+      xs={2} sm={3} md={6}
+      alignItems="center">
+      
         <Paper sx={customStyles} >
           <h2>This Challenge's To-Do Tasks</h2>
-          {/* {console.log('tasks to pass: ', tasks)} */}
+          
           {tasks ? <ChallengeTasks tasks={tasks} /> : null} 
         </Paper>
       </Grid>
+        ):(null)}
+
 
     </Grid>
     </Box>
