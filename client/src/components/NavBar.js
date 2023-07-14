@@ -11,7 +11,7 @@ import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import { Link } from 'react-router-dom';
 import auth from '../utils/auth';
-
+import { useNavigate } from 'react-router-dom';
 // import zIndex from '@mui/material/styles/zIndex';
 const fontType = 'papyrus'
 
@@ -19,11 +19,12 @@ const pages = [{profileName:'Profile',link:'/profile'},{profileName:'Journal',li
 
 function ResponsiveHeader({ handlePageChange }) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
-
+  const navigate = useNavigate()
   const endSession = (event) => {
     console.log(event.target.textContent);
     if (event.target.textContent ==='Logout' ) {
       auth.logout()
+      navigate('/')
     } else{
       return
     }
