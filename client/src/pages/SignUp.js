@@ -11,13 +11,14 @@ import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import auth from '../utils/auth';
 import { ADD_USER} from '../utils/mutations'
+import { useNavigate } from 'react-router-dom';
 
 export default function SingUpForm() {
   const [addUser, { error, data }] = useMutation(ADD_USER);
   const [open, setOpen] = React.useState(false);
 
   const [userFormData, setUserFormData] = useState({ username: '', email: '', password: '' });
- 
+  const navigate = useNavigate()
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -34,6 +35,7 @@ export default function SingUpForm() {
       });
 
       auth.login(data.addUser.token);
+      navigate('/profile')
     } catch (e) {
       console.error(e);
     }
